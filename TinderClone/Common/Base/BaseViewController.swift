@@ -23,4 +23,13 @@ class BaseViewController: UIViewController {
         view.fillSuperview()
     }
     
+    func presentLoginViewController() {
+        DispatchQueue.main.async {
+            let controller = LoginViewController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+    }
+    
 }

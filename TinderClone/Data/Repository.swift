@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Repository {
     
@@ -32,4 +33,23 @@ class Repository {
         
         return [cardView1, cardView2]
     }
+    
+    func registerUser(with credentials: AuthCredentials, completionHandler: @escaping (String?, Error?) -> Void) {
+        AuthService.registerUser(with: credentials, completionHandler: completionHandler)
+    }
+    
+    func logoutUser(completionHandler: @escaping (Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completionHandler(nil)
+        } catch {
+            completionHandler(error)
+        }
+    }
+    
+    func logUserIn(email: String, password: String,
+                   completionHandler: @escaping (AuthDataResult?, Error?) -> Void) {
+        AuthService.logUserIn(email: email, password: password, completionHandler: completionHandler)
+    }
+    
 }

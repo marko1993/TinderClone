@@ -20,4 +20,21 @@ class LoginViewModel: BaseViewModel {
         }
         return false
     }
+    
+    private var isLoginSuccessful: BehaviorRelay<Bool?> = BehaviorRelay(value: nil)
+    var loginStatusObservable: Observable<Bool?> {
+        return isLoginSuccessful.asObservable()
+    }
+    
+    func logUserIn(email: String, password: String) {
+        Repository.shared().logUserIn(email: email, password: password) { [weak self] authDataResult, error in
+            if let error = error {
+                print(error.localizedDescription)
+                self?.isLoginSuccessful.accept(false)
+            } else {
+                self?.isLoginSuccessful.accept(true)
+            }
+        }
+    }
+    
 }

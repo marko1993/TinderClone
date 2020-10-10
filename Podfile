@@ -8,5 +8,11 @@ target 'TinderClone' do
   # Pods for TinderClone
   pod 'RxSwift', '~> 5.0'
   pod 'RxCocoa', '~> 5.0'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Core'
+  pod 'SDWebImage', '~>4.4.2'
+  pod 'JGProgressHUD', '~>2.0.3'
 
 end

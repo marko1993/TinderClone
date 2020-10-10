@@ -30,7 +30,14 @@ class RegistrationViewController: BaseViewController {
         }
         
         registrationView.registerButton.onTap(disposeBag: disposeBag) {
-            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            guard let email = self.registrationView.emailTextField.text else {return}
+            guard let password = self.registrationView.passwordTextField.text else {return}
+            guard let fullName = self.registrationView.fullNameField.text else {return}
+            guard let profileimage = self.viewModel.selectedProfileImage else {return}
+            
+            let credentials = AuthCredentials(email: email, password: password, fullName: fullName, profileImage: profileimage)
+            
+            self.viewModel.registerUser(with: credentials)
         }
         
         registrationView.goToLoginButton.onTap(disposeBag: disposeBag) {
@@ -51,6 +58,14 @@ class RegistrationViewController: BaseViewController {
             self.viewModel.password = text
             self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
         }
+        
+        viewModel.registrationStatusObservable.subscribe(onNext: { [weak self] isSuccessful in
+            if let isSuccessful = isSuccessful {
+                if isSuccessful {
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }).disposed(by: disposeBag)
     }
     
 }
@@ -62,6 +77,7 @@ extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigat
         
         let image = info[.originalImage] as? UIImage
         registrationView.setPhoto(image: image)
+        viewModel.selectedProfileImage = image
         dismiss(animated: true, completion: nil)
     }
     

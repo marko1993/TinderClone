@@ -19,4 +19,11 @@ struct K {
         static let dontHaveAccount = "Don't have an account? "
         static let alreadyHaveAccount = "Already have an account? "
     }
+    struct UserDataParams {
+        static let email = "email"
+        static let fullName = "fullName"
+        static let imageUrl = "imageUrl"
+        static let uid = "uid"
+        static let age = "age"
+    }
 }

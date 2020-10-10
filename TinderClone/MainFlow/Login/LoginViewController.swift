@@ -28,13 +28,15 @@ class LoginViewController: BaseViewController {
         loginView
             .loginButton
             .onTap(disposeBag: disposeBag) {
-            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                guard let email = self.loginView.emailTextField.text else {return}
+                guard let password = self.loginView.passwordTextField.text else {return}
+                self.viewModel.logUserIn(email: email, password: password)
         }
        
         loginView
             .goToRegistrationButton
             .onTap(disposeBag: disposeBag) {
-            self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
+                self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
         }
         
         loginView
@@ -50,6 +52,14 @@ class LoginViewController: BaseViewController {
                 self.viewModel.password = text
                 self.loginView.loginButtonEnabled(isEnabled: self.viewModel.isFormValid)
         }
+        
+        viewModel.loginStatusObservable.subscribe(onNext: { isSuccessful in
+            if let isSuccessful = isSuccessful {
+                if isSuccessful {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }).disposed(by: disposeBag)
         
     }
     
