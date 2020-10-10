@@ -17,6 +17,7 @@ class RegistrationView: BaseView {
     var registerButton = CustomButton(title: K.Strings.register, type: .system)
     var stack = UIStackView()
     var goToLoginButton = ButtonWithAttributedString(title: K.Strings.alreadyHaveAccount, appendedString: K.Strings.login, type: .system)
+    var errorLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +33,7 @@ class RegistrationView: BaseView {
         stack.addArrangedSubview(fullNameField)
         stack.addArrangedSubview(passwordTextField)
         stack.addArrangedSubview(registerButton)
+        stack.addArrangedSubview(errorLabel)
         addSubview(stack)
         addSubview(goToLoginButton)
     }
@@ -48,6 +50,11 @@ class RegistrationView: BaseView {
         
         stack.axis = .vertical
         stack.spacing = 16
+        
+        errorLabel.font = UIFont.systemFont(ofSize: 10)
+        errorLabel.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        errorLabel.isHidden = true
+        errorLabel.numberOfLines = 2
     }
     
     override func addConstraints() {
@@ -76,6 +83,11 @@ class RegistrationView: BaseView {
             registerButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         }
         registerButton.isEnabled = isEnabled
+    }
+    
+    func setErrorLabel(text: String) {
+        errorLabel.text = text
+        errorLabel.isHidden = false
     }
     
 }

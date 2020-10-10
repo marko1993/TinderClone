@@ -30,7 +30,13 @@ class LoginViewController: BaseViewController {
             .onTap(disposeBag: disposeBag) {
                 guard let email = self.loginView.emailTextField.text else {return}
                 guard let password = self.loginView.passwordTextField.text else {return}
-                self.viewModel.logUserIn(email: email, password: password)
+                self.viewModel.logUserIn(email: email, password: password) { [weak self] error in
+                    if let error = error {
+                        self?.loginView.setErrorLabel(text: error.localizedDescription)
+                        return
+                    }
+                    self?.dismiss(animated: true, completion: nil)
+                }
         }
        
         loginView
@@ -43,24 +49,21 @@ class LoginViewController: BaseViewController {
             .emailTextField
             .onValueChanged(disposeBag: disposeBag) { text in
                 self.viewModel.email = text
-                self.loginView.loginButtonEnabled(isEnabled: self.viewModel.isFormValid)
+                self.onValueInTextFieldChanged()
         }
         
         loginView
             .passwordTextField
             .onValueChanged(disposeBag: disposeBag) { text in
                 self.viewModel.password = text
-                self.loginView.loginButtonEnabled(isEnabled: self.viewModel.isFormValid)
+                self.onValueInTextFieldChanged()
         }
         
-        viewModel.loginStatusObservable.subscribe(onNext: { isSuccessful in
-            if let isSuccessful = isSuccessful {
-                if isSuccessful {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
-        }).disposed(by: disposeBag)
-        
+    }
+    
+    private func onValueInTextFieldChanged() {
+        self.loginView.loginButtonEnabled(isEnabled: self.viewModel.isFormValid)
+        self.loginView.errorLabel.isHidden = true
     }
     
 }

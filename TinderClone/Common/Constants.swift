@@ -26,4 +26,7 @@ struct K {
         static let uid = "uid"
         static let age = "age"
     }
+    struct Error {
+        static let avatarMissing = "Avatar needs to be added"
+    }
 }

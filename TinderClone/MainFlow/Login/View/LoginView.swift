@@ -16,6 +16,7 @@ class LoginView: BaseView {
     var stack = UIStackView()
     var loginButton = CustomButton(title: K.Strings.login, type: .system)
     var goToRegistrationButton = ButtonWithAttributedString(title: K.Strings.dontHaveAccount, appendedString: K.Strings.signUp, type: .system)
+    var errorLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +31,7 @@ class LoginView: BaseView {
         stack.addArrangedSubview(emailTextField)
         stack.addArrangedSubview(passwordTextField)
         stack.addArrangedSubview(loginButton)
+        stack.addArrangedSubview(errorLabel)
         addSubview(stack)
         addSubview(goToRegistrationButton)
     }
@@ -56,6 +58,11 @@ class LoginView: BaseView {
         stack.anchor(top: iconImage.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 24, paddingLeft: 32, paddingRight: 32)
         
         goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingRight: 32)
+        
+        errorLabel.font = UIFont.systemFont(ofSize: 10)
+        errorLabel.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        errorLabel.isHidden = true
+        errorLabel.numberOfLines = 2
     }
     
     func loginButtonEnabled(isEnabled: Bool) {
@@ -65,6 +72,11 @@ class LoginView: BaseView {
             loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         }
         loginButton.isEnabled = isEnabled
+    }
+    
+    func setErrorLabel(text: String) {
+        errorLabel.text = text
+        errorLabel.isHidden = false
     }
     
 }

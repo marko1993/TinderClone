@@ -33,11 +33,20 @@ class RegistrationViewController: BaseViewController {
             guard let email = self.registrationView.emailTextField.text else {return}
             guard let password = self.registrationView.passwordTextField.text else {return}
             guard let fullName = self.registrationView.fullNameField.text else {return}
-            guard let profileimage = self.viewModel.selectedProfileImage else {return}
+            guard let profileimage = self.viewModel.selectedProfileImage else {
+                self.registrationView.setErrorLabel(text: K.Error.avatarMissing)
+                return
+            }
             
             let credentials = AuthCredentials(email: email, password: password, fullName: fullName, profileImage: profileimage)
             
-            self.viewModel.registerUser(with: credentials)
+            self.viewModel.registerUser(with: credentials) { [weak self] error in
+                if let error = error {
+                    self?.registrationView.setErrorLabel(text: error.localizedDescription)
+                    return
+                }
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
         
         registrationView.goToLoginButton.onTap(disposeBag: disposeBag) {
@@ -46,26 +55,23 @@ class RegistrationViewController: BaseViewController {
         
         registrationView.emailTextField.onValueChanged(disposeBag: disposeBag) { text in
             self.viewModel.email = text
-            self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
+            self.onValueInTextFieldChanged()
         }
         
         registrationView.fullNameField.onValueChanged(disposeBag: disposeBag) { text in
             self.viewModel.fullName = text
-            self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
+            self.onValueInTextFieldChanged()
         }
         
         registrationView.passwordTextField.onValueChanged(disposeBag: disposeBag) { text in
             self.viewModel.password = text
-            self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
+            self.onValueInTextFieldChanged()
         }
-        
-        viewModel.registrationStatusObservable.subscribe(onNext: { [weak self] isSuccessful in
-            if let isSuccessful = isSuccessful {
-                if isSuccessful {
-                    self?.dismiss(animated: true, completion: nil)
-                }
-            }
-        }).disposed(by: disposeBag)
+    }
+    
+    private func onValueInTextFieldChanged() {
+        self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
+        self.registrationView.errorLabel.isHidden = true
     }
     
 }

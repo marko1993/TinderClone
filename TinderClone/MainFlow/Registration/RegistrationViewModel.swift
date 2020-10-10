@@ -22,19 +22,13 @@ class RegistrationViewModel: BaseViewModel {
         return false
     }
     
-    private var registrationSucceded: BehaviorRelay<Bool?> = BehaviorRelay(value: nil)
-    var registrationStatusObservable: Observable<Bool?> {
-        return registrationSucceded.asObservable()
-    }
-    
-    func registerUser(with credentials: AuthCredentials) {
-        Repository.shared().registerUser(with: credentials) { [weak self] uid, error in
-            if error != nil {
-                self?.registrationSucceded.accept(false)
-                print(error!.localizedDescription)
+    func registerUser(with credentials: AuthCredentials, completionHandler: @escaping (Error?) -> Void) {
+        Repository.shared().registerUser(with: credentials) { uid, error in
+            if let error = error {
+                completionHandler(error)
+                print(error.localizedDescription)
             } else {
-                self?.registrationSucceded.accept(true)
-                print("Successfully registered user with id: \(uid ?? "Error")")
+                completionHandler(nil)
             }
             
         }
