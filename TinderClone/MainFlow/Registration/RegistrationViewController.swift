@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RegistrationViewController: BaseViewController {
     
@@ -15,8 +17,38 @@ class RegistrationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureGradientLayer()
         setupView(registrationView)
-        view.backgroundColor = .purple
+        setupBinding()
+    }
+    
+    private func setupBinding() {
+        let selectPhotoTap = UITapGestureRecognizer()
+        selectPhotoTap
+            .rx
+            .event
+            .subscribe(onNext: { _ in
+                
+            }).disposed(by: disposeBag)
+        registrationView.selectPhotoButton.addGestureRecognizer(selectPhotoTap)
+        
+        let registerButtonTap = UITapGestureRecognizer()
+        registerButtonTap
+            .rx
+            .event
+            .subscribe(onNext: { _ in
+                
+            }).disposed(by: disposeBag)
+        registrationView.registerButton.addGestureRecognizer(registerButtonTap)
+        
+        let goToLoginTap = UITapGestureRecognizer()
+        goToLoginTap
+            .rx
+            .event
+            .subscribe(onNext: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
+        registrationView.goToLoginButton.addGestureRecognizer(goToLoginTap)
     }
     
 }

@@ -15,7 +15,7 @@ class LoginView: BaseView {
     var passwordTextField = CustomTextField(placeHolder: K.Strings.password)
     var stack = UIStackView()
     var loginButton = CustomButton(title: K.Strings.login, type: .system)
-    var goToRegistrationButton = UIButton(type: .system)
+    var goToRegistrationButton = ButtonWithAttributedString(title: K.Strings.alreadyHaveAccount, appendedString: K.Strings.login, type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,12 +39,7 @@ class LoginView: BaseView {
         iconImage.tintColor = .white
         
         passwordTextField.isSecureTextEntry = true
-        //loginButton.isEnabled = false
-        
-        let attributedTitle = NSMutableAttributedString(string: K.Strings.dontHaveAccount, attributes: [.foregroundColor : UIColor.white])
-        attributedTitle.append(NSAttributedString(string: K.Strings.signUp, attributes: [.foregroundColor : UIColor.white, .font: UIFont.boldSystemFont(ofSize: 16)]))
-        
-        goToRegistrationButton.setAttributedTitle(attributedTitle, for: .normal)
+        loginButton.isEnabled = false
         
         stack.axis = .vertical
         stack.spacing = 16
