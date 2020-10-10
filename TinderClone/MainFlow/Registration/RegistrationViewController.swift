@@ -30,11 +30,26 @@ class RegistrationViewController: BaseViewController {
         }
         
         registrationView.registerButton.onTap(disposeBag: disposeBag) {
-            
+            self.navigationController?.pushViewController(HomeViewController(), animated: true)
         }
         
         registrationView.goToLoginButton.onTap(disposeBag: disposeBag) {
             self.navigationController?.popViewController(animated: true)
+        }
+        
+        registrationView.emailTextField.onValueChanged(disposeBag: disposeBag) { text in
+            self.viewModel.email = text
+            self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
+        }
+        
+        registrationView.fullNameField.onValueChanged(disposeBag: disposeBag) { text in
+            self.viewModel.fullName = text
+            self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
+        }
+        
+        registrationView.passwordTextField.onValueChanged(disposeBag: disposeBag) { text in
+            self.viewModel.password = text
+            self.registrationView.registerButtonEnabled(isEnabled: self.viewModel.isFormValid)
         }
     }
     

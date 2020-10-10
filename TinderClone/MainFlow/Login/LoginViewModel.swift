@@ -7,7 +7,17 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class LoginViewModel: BaseViewModel {
-    
+    var email: String?
+    var password: String?
+    var isFormValid: Bool {
+        if let email = email, let password = password {
+            let isValid = !email.isEmpty && !password.isEmpty
+            return isValid
+        }
+        return false
+    }
 }

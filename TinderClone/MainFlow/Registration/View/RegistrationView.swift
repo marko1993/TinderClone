@@ -40,6 +40,9 @@ class RegistrationView: BaseView {
         selectPhotoButton.tintColor = .white
         selectPhotoButton.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         selectPhotoButton.setDimensions(height: 275, width: 275)
+        selectPhotoButton.clipsToBounds = true
+        
+        registerButton.isEnabled = false
         
         passwordTextField.isSecureTextEntry = true
         
@@ -64,6 +67,15 @@ class RegistrationView: BaseView {
         selectPhotoButton.layer.borderWidth = 3
         selectPhotoButton.layer.cornerRadius = 3
         selectPhotoButton.imageView?.contentMode = .scaleAspectFill
+    }
+    
+    func registerButtonEnabled(isEnabled: Bool) {
+        if isEnabled {
+            registerButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        } else {
+            registerButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        }
+        registerButton.isEnabled = isEnabled
     }
     
 }

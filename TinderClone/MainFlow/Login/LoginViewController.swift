@@ -25,13 +25,32 @@ class LoginViewController: BaseViewController {
     }
     
     func setupBindings() {
-        loginView.loginButton.onTap(disposeBag: disposeBag) {
+        loginView
+            .loginButton
+            .onTap(disposeBag: disposeBag) {
             self.navigationController?.pushViewController(HomeViewController(), animated: true)
         }
        
-        loginView.goToRegistrationButton.onTap(disposeBag: disposeBag) {
+        loginView
+            .goToRegistrationButton
+            .onTap(disposeBag: disposeBag) {
             self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
         }
+        
+        loginView
+            .emailTextField
+            .onValueChanged(disposeBag: disposeBag) { text in
+                self.viewModel.email = text
+                self.loginView.loginButtonEnabled(isEnabled: self.viewModel.isFormValid)
+        }
+        
+        loginView
+            .passwordTextField
+            .onValueChanged(disposeBag: disposeBag) { text in
+                self.viewModel.password = text
+                self.loginView.loginButtonEnabled(isEnabled: self.viewModel.isFormValid)
+        }
+        
     }
     
 }

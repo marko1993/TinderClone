@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 extension UIButton {
-    func onTap(disposeBag: DisposeBag, completionHandler: @escaping () -> ()) {
+    func onTap(disposeBag: DisposeBag, completionHandler: @escaping () -> Void) {
         let tap = UITapGestureRecognizer()
         tap
             .rx

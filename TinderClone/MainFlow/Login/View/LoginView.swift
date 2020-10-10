@@ -58,4 +58,13 @@ class LoginView: BaseView {
         goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingRight: 32)
     }
     
+    func loginButtonEnabled(isEnabled: Bool) {
+        if isEnabled {
+            loginButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        } else {
+            loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        }
+        loginButton.isEnabled = isEnabled
+    }
+    
 }

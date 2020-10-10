@@ -11,6 +11,8 @@
 		AD094AC72529F5760026FB61 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD094AC62529F5760026FB61 /* BaseViewModel.swift */; };
 		AD0F3F052531E4CD00B441C5 /* ButtonWithAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F042531E4CD00B441C5 /* ButtonWithAttributedString.swift */; };
 		AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F062531E77F00B441C5 /* UIButton+Extensions.swift */; };
+		AD0F3F092531EFDD00B441C5 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */; };
+		AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */; };
 		AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */; };
 		AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */; };
 		AD4A31D72528E3FF0050E9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD4A31D62528E3FF0050E9CA /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		AD094AC62529F5760026FB61 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		AD0F3F042531E4CD00B441C5 /* ButtonWithAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithAttributedString.swift; sourceTree = "<group>"; };
 		AD0F3F062531E77F00B441C5 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		AD4A31CA2528E3FD0050E9CA /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 			children = (
 				AD4A31EC2528E6E40050E9CA /* Extensions.swift */,
 				AD0F3F062531E77F00B441C5 /* UIButton+Extensions.swift */,
+				AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */,
+				AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -406,10 +412,12 @@
 				AD0F3F052531E4CD00B441C5 /* ButtonWithAttributedString.swift in Sources */,
 				ADB820DA2529DF1A00EC2E58 /* CardView+Helpers.swift in Sources */,
 				ADB820DF2529E4F000EC2E58 /* CardViewModel.swift in Sources */,
+				AD0F3F092531EFDD00B441C5 /* UITextField+Extensions.swift in Sources */,
 				AD4A31F42528ED8A0050E9CA /* BottomControlsStackView.swift in Sources */,
 				AD4A31EB2528E5DC0050E9CA /* BaseViewController.swift in Sources */,
 				AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */,
 				AD4A31EF2528E7300050E9CA /* HomeNavigationStackView.swift in Sources */,
+				AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */,
 				AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */,
 				AD8374552530D1D4004C79EA /* Repository.swift in Sources */,
 				AD094AC72529F5760026FB61 /* BaseViewModel.swift in Sources */,

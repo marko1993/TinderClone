@@ -9,5 +9,13 @@
 import Foundation
 
 class RegistrationViewModel: BaseViewModel {
-    
+    var email: String?
+    var fullName: String?
+    var password: String?
+    var isFormValid: Bool {
+        if let email = email, let fullName = fullName, let password = password {
+            return !email.isEmpty && !fullName.isEmpty && !password.isEmpty
+        }
+        return false
+    }
 }
