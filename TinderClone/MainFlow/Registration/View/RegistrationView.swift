@@ -58,4 +58,12 @@ class RegistrationView: BaseView {
         goToLoginButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingRight: 32)
     }
     
+    func setPhoto(image: UIImage?) {
+        selectPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        selectPhotoButton.layer.borderColor = UIColor(white: 1, alpha: 0.7).cgColor
+        selectPhotoButton.layer.borderWidth = 3
+        selectPhotoButton.layer.cornerRadius = 3
+        selectPhotoButton.imageView?.contentMode = .scaleAspectFill
+    }
+    
 }

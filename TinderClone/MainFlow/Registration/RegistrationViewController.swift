@@ -24,7 +24,9 @@ class RegistrationViewController: BaseViewController {
     
     private func setupBinding() {
         registrationView.selectPhotoButton.onTap(disposeBag: disposeBag) {
-            
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            self.present(picker, animated: true, completion: nil)
         }
         
         registrationView.registerButton.onTap(disposeBag: disposeBag) {
@@ -34,6 +36,18 @@ class RegistrationViewController: BaseViewController {
         registrationView.goToLoginButton.onTap(disposeBag: disposeBag) {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+}
+
+//MARK: - UIImagePickerControllerDelegate
+extension RegistrationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let image = info[.originalImage] as? UIImage
+        registrationView.setPhoto(image: image)
+        dismiss(animated: true, completion: nil)
     }
     
 }
