@@ -18,16 +18,20 @@ class HomeViewModel: BaseViewModel {
         return logoutSuccessful.asObservable()
     }
     
-    func getCards() -> [CardView] {
-        return Repository.shared().getCards()
+    private var user: BehaviorRelay<User?> = BehaviorRelay(value: nil)
+    var userObservable: Observable<User?> {
+        return user.asObservable()
+    }
+    
+    private var cards: BehaviorRelay<[CardView]?> = BehaviorRelay(value: nil)
+    var cardsObservable: Observable<[CardView]?> {
+        return cards.asObservable()
     }
     
     func isUserLoggedIn() -> Bool {
         if Auth.auth().currentUser == nil {
-            print("User not logged in")
             return false
         } else {
-            print("User logged in")
             return true
         }
     }
@@ -39,6 +43,29 @@ class HomeViewModel: BaseViewModel {
             } else {
                 self?.logoutSuccessful.accept(true)
             }
+        }
+    }
+    
+    func getCurrentUser() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        Repository.shared().getUser(withUid: uid) { [weak self] user, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            self?.user.accept(user)
+        }
+    }
+    
+    func getUsers() {
+        Repository.shared().getUsers { [weak self] users, error in
+            if let error = error {
+                print(error)
+                return
+            }
+            self?.cards.accept(users?
+                .map({CardView(viewModel: CardViewModel(user: $0))})
+            )
         }
     }
     

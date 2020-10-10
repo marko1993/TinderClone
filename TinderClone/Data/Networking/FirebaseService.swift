@@ -31,4 +31,32 @@ struct FirebaseService {
         }
     }
     
+    static func fetchUser(withUid uid: String, completionHandler: @escaping (User?, Error?) -> Void) {
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error {
+                completionHandler(nil, error)
+                return
+            }
+            guard let data = snapshot?.data() else {return}
+            completionHandler(User(data: data), nil)
+        }
+    }
+    
+    static func fetchUsers(completionHandler: @escaping ([User]?, Error?) -> Void) {
+        var users = [User]()
+        
+        Firestore.firestore().collection("users").getDocuments { (snapshot, error) in
+            if let error = error {
+                completionHandler(nil, error)
+                return
+            }
+            snapshot?.documents.forEach({ document in
+                let data = document.data()
+                let user = User(data: data)
+                users.append(user)
+            })
+            completionHandler(users, nil)
+        }
+    }
+    
 }

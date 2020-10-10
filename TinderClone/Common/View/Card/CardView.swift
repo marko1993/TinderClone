@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SDWebImage
 
 enum SwipeDirection: Int {
     case left = -1
@@ -52,7 +53,7 @@ class CardView: BaseView {
         infoButton.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
         
         imageView.contentMode = .scaleAspectFill
-        imageView.image = viewModel.user.images.first
+        imageView.sd_setImage(with: viewModel.currentImageURL)
         
         infoLabel.attributedText = viewModel.getUserInfoTextAttributedString()
         infoLabel.numberOfLines = 2
@@ -105,9 +106,9 @@ class CardView: BaseView {
         let location = sender.location(in: nil).x
         let shouldShowNextPhoto = location > self.frame.width / 2
         if shouldShowNextPhoto {
-            imageView.image = viewModel.showNextPhoto()
+            imageView.sd_setImage(with: viewModel.showNextPhoto())
         } else {
-            imageView.image = viewModel.showPreviousPhoto()
+            imageView.sd_setImage(with: viewModel.showPreviousPhoto())
         }
     }
     

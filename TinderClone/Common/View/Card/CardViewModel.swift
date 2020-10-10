@@ -12,10 +12,11 @@ class CardViewModel: BaseViewModel {
     
     let user: User
     private var imageIndex = 0
-    private lazy var currentImage = user.images.first
+    var currentImageURL: URL?
     
     init(user: User) {
         self.user = user
+        self.currentImageURL = URL(string: user.profileImageUrl)
     }
     
     func getUserInfoTextAttributedString() -> NSAttributedString {
@@ -31,22 +32,22 @@ class CardViewModel: BaseViewModel {
         return attributedText
     }
     
-    func showNextPhoto() -> UIImage {
+    func showNextPhoto() -> URL? {
         imageIndex += 1
         if imageIndex >= user.images.count {
             imageIndex = 0
         }
-        self.currentImage = user.images[imageIndex]
-        return self.currentImage!
+        self.currentImageURL = user.images[imageIndex]
+        return self.currentImageURL
     }
     
-    func showPreviousPhoto()  -> UIImage{
+    func showPreviousPhoto()  -> URL?{
         imageIndex -= 1
         if imageIndex <= -1 {
             imageIndex = user.images.count - 1
         }
-        self.currentImage = user.images[imageIndex]
-        return self.currentImage!
+        self.currentImageURL = user.images[imageIndex]
+        return self.currentImageURL
     }
     
 }

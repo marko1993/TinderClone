@@ -11,5 +11,20 @@ import UIKit
 struct User {
     var name: String
     var age: Int
-    var images: [UIImage]
+    var email: String
+    let uid: String
+    var profileImageUrl: String
+    var images: [URL]
+    
+    init(data: [String: Any]) {
+        self.name = data[K.UserDataParams.fullName] as? String ?? ""
+        self.email = data[K.UserDataParams.email] as? String ?? ""
+        self.age = data[K.UserDataParams.age] as? Int ?? 0
+        self.uid = data[K.UserDataParams.uid] as? String ?? ""
+        self.profileImageUrl = data[K.UserDataParams.imageUrl] as? String ?? ""
+        self.images = []
+        guard let profileURL = URL(string: profileImageUrl) else {return}
+        self.images.append(profileURL)
+    }
+    
 }

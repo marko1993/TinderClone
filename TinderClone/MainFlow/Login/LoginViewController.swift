@@ -30,6 +30,7 @@ class LoginViewController: BaseViewController {
             .onTap(disposeBag: disposeBag) {
                 guard let email = self.loginView.emailTextField.text else {return}
                 guard let password = self.loginView.passwordTextField.text else {return}
+                
                 self.viewModel.logUserIn(email: email, password: password) { [weak self] error in
                     if let error = error {
                         self?.loginView.setErrorLabel(text: error.localizedDescription)
