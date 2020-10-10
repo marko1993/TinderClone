@@ -23,32 +23,17 @@ class RegistrationViewController: BaseViewController {
     }
     
     private func setupBinding() {
-        let selectPhotoTap = UITapGestureRecognizer()
-        selectPhotoTap
-            .rx
-            .event
-            .subscribe(onNext: { _ in
-                
-            }).disposed(by: disposeBag)
-        registrationView.selectPhotoButton.addGestureRecognizer(selectPhotoTap)
+        registrationView.selectPhotoButton.onTap(disposeBag: disposeBag) {
+            
+        }
         
-        let registerButtonTap = UITapGestureRecognizer()
-        registerButtonTap
-            .rx
-            .event
-            .subscribe(onNext: { _ in
-                
-            }).disposed(by: disposeBag)
-        registrationView.registerButton.addGestureRecognizer(registerButtonTap)
+        registrationView.registerButton.onTap(disposeBag: disposeBag) {
+            
+        }
         
-        let goToLoginTap = UITapGestureRecognizer()
-        goToLoginTap
-            .rx
-            .event
-            .subscribe(onNext: { _ in
-                self.navigationController?.popViewController(animated: true)
-            }).disposed(by: disposeBag)
-        registrationView.goToLoginButton.addGestureRecognizer(goToLoginTap)
+        registrationView.goToLoginButton.onTap(disposeBag: disposeBag) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
 }

@@ -25,23 +25,13 @@ class LoginViewController: BaseViewController {
     }
     
     func setupBindings() {
-        let loginTap = UITapGestureRecognizer()
-        loginTap
-            .rx
-            .event
-            .subscribe(onNext: { _ in
-                self.navigationController?.pushViewController(HomeViewController(), animated: true)
-            }).disposed(by: disposeBag)
-        loginView.loginButton.addGestureRecognizer(loginTap)
-        
-        let goToRegistrationTap = UITapGestureRecognizer()
-        goToRegistrationTap
-            .rx
-            .event
-            .subscribe(onNext: { _ in
-                self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
-            }).disposed(by: disposeBag)
-        loginView.goToRegistrationButton.addGestureRecognizer(goToRegistrationTap)
+        loginView.loginButton.onTap(disposeBag: disposeBag) {
+            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        }
+       
+        loginView.goToRegistrationButton.onTap(disposeBag: disposeBag) {
+            self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
+        }
     }
     
 }

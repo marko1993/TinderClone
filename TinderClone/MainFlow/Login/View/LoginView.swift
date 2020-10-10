@@ -15,7 +15,7 @@ class LoginView: BaseView {
     var passwordTextField = CustomTextField(placeHolder: K.Strings.password)
     var stack = UIStackView()
     var loginButton = CustomButton(title: K.Strings.login, type: .system)
-    var goToRegistrationButton = ButtonWithAttributedString(title: K.Strings.alreadyHaveAccount, appendedString: K.Strings.login, type: .system)
+    var goToRegistrationButton = ButtonWithAttributedString(title: K.Strings.dontHaveAccount, appendedString: K.Strings.signUp, type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
