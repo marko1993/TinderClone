@@ -29,6 +29,10 @@
 		AD4A31F62528F0B20050E9CA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F52528F0B20050E9CA /* CardView.swift */; };
 		AD4A31F82529031F0050E9CA /* BaseStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F72529031F0050E9CA /* BaseStackView.swift */; };
 		AD4A31FA252903ED0050E9CA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F9252903ED0050E9CA /* BaseView.swift */; };
+		AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0CD25331C1B000D1AD4 /* SettingsViewController.swift */; };
+		AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */; };
+		AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D225331C63000D1AD4 /* SettingsView.swift */; };
+		AD56B0D525332A42000D1AD4 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */; };
 		AD8374532530D02C004C79EA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374522530D02C004C79EA /* HomeViewModel.swift */; };
 		AD8374552530D1D4004C79EA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374542530D1D4004C79EA /* Repository.swift */; };
 		AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374582530D61A004C79EA /* RegistrationViewController.swift */; };
@@ -71,6 +75,10 @@
 		AD4A31F52528F0B20050E9CA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AD4A31F72529031F0050E9CA /* BaseStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStackView.swift; sourceTree = "<group>"; };
 		AD4A31F9252903ED0050E9CA /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		AD56B0CD25331C1B000D1AD4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		AD56B0D225331C63000D1AD4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		AD8374522530D02C004C79EA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AD8374542530D1D4004C79EA /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AD8374582530D61A004C79EA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 				AD8374572530D5FB004C79EA /* Registration */,
 				AD8374562530D5F3004C79EA /* Login */,
 				AD4A31E72528E4EE0050E9CA /* Home */,
+				AD56B0CC25331BE5000D1AD4 /* Settings */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -240,6 +249,25 @@
 			isa = PBXGroup;
 			children = (
 				AD4A31F02528E8E80050E9CA /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD56B0CC25331BE5000D1AD4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AD56B0CD25331C1B000D1AD4 /* SettingsViewController.swift */,
+				AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */,
+				AD56B0D125331C4F000D1AD4 /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AD56B0D125331C4F000D1AD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD56B0D225331C63000D1AD4 /* SettingsView.swift */,
+				AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -413,8 +441,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD56B0D525332A42000D1AD4 /* SettingsHeaderView.swift in Sources */,
+				AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */,
 				AD8374602530D6F1004C79EA /* LoginViewController.swift in Sources */,
 				AD0F3F102532114300B441C5 /* AuthService.swift in Sources */,
+				AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */,
 				AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */,
 				AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */,
 				ADB820DC2529E3F000EC2E58 /* User.swift in Sources */,
@@ -437,6 +468,7 @@
 				AD4A31EB2528E5DC0050E9CA /* BaseViewController.swift in Sources */,
 				AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */,
 				AD4A31EF2528E7300050E9CA /* HomeNavigationStackView.swift in Sources */,
+				AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */,
 				AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */,
 				AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */,
 				AD8374552530D1D4004C79EA /* Repository.swift in Sources */,

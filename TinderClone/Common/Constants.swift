@@ -18,6 +18,9 @@ struct K {
         static let signUp = "Sign Up"
         static let dontHaveAccount = "Don't have an account? "
         static let alreadyHaveAccount = "Already have an account? "
+        static let cancel = "Cancel"
+        static let done = "Done"
+        static let settingsViewControllerTitle = "Settings"
     }
     struct UserDataParams {
         static let email = "email"

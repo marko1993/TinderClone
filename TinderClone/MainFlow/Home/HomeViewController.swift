@@ -39,6 +39,13 @@ class HomeViewController: BaseViewController {
             self.viewModel.logoutUser()
         }
         
+        homeView.navigationStackView.settingsButton.onTap(disposeBag: disposeBag) {
+            let controller = SettingsViewController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        }
+        
         viewModel.logoutStatusObservable.subscribe(onNext: { successful in
             if let successful = successful {
                 if successful {
