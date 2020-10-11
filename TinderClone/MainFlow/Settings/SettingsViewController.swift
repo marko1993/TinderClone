@@ -14,9 +14,11 @@ class SettingsViewController: BaseViewController {
     
     let viewModel = SettingsViewModel()
     let settingsView = SettingsView()
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         setupView(settingsView)
         configureNavigationController()
         setupBindings()
@@ -31,16 +33,16 @@ class SettingsViewController: BaseViewController {
     }
     
     func setupBindings() {
-        settingsView.headerView.selectPhotoBtn1.onTap(disposeBag: disposeBag) {
-            print("SELECT PHOTO 1")
+        settingsView.headerView.selectPhotoBtnFirst.onTap(disposeBag: disposeBag) {
+            self.presentImagePicker(headerButton: .first)
         }
         
-        settingsView.headerView.selectPhotoBtn2.onTap(disposeBag: disposeBag) {
-            print("SELECT PHOTO 2")
+        settingsView.headerView.selectPhotoBtnSecond.onTap(disposeBag: disposeBag) {
+            self.presentImagePicker(headerButton: .second)
         }
         
-        settingsView.headerView.selectPhotoBtn3.onTap(disposeBag: disposeBag) {
-            print("SELECT PHOTO 3")
+        settingsView.headerView.selectPhotoBtnThird.onTap(disposeBag: disposeBag) {
+            self.presentImagePicker(headerButton: .third)
         }
         
         settingsView.cancelButton.onTap(disposeBag: disposeBag) {
@@ -48,8 +50,21 @@ class SettingsViewController: BaseViewController {
         }
         
         settingsView.doneButton.onTap(disposeBag: disposeBag) {
-            print("DONE")
+            print(K.Strings.done)
         }
     }
     
+    private func presentImagePicker(headerButton: SettingsHeaderButtons) {
+        settingsView.headerView.buttonToUpdate = headerButton
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+}
+
+extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedImage = info[.originalImage] as? UIImage
+        settingsView.headerView.setHeaderImage(image: selectedImage)
+        dismiss(animated: true, completion: nil)
+    }
 }

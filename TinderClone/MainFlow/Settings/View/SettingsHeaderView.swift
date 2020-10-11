@@ -8,13 +8,20 @@
 
 import UIKit
 
+enum SettingsHeaderButtons: Int {
+    case first = 0
+    case second = 1
+    case third = 2
+}
+
 class SettingsHeaderView: BaseView {
     
-    var buttons = [UIButton]()
-    lazy var selectPhotoBtn1 = createButton()
-    lazy var selectPhotoBtn2 = createButton()
-    lazy var selectPhotoBtn3 = createButton()
-    lazy var secondaryButtonsStack = UIStackView(arrangedSubviews: [selectPhotoBtn2, selectPhotoBtn3])
+    lazy var selectPhotoBtnFirst = createButton()
+    lazy var selectPhotoBtnSecond = createButton()
+    lazy var selectPhotoBtnThird = createButton()
+    lazy var secondaryButtonsStack = UIStackView(arrangedSubviews: [selectPhotoBtnSecond, selectPhotoBtnThird])
+    lazy var buttons: [UIButton] = [selectPhotoBtnFirst, selectPhotoBtnSecond, selectPhotoBtnThird]
+    var buttonToUpdate: SettingsHeaderButtons?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +33,7 @@ class SettingsHeaderView: BaseView {
     }
     
     override func addSubviews() {
-        addSubview(selectPhotoBtn1)
+        addSubview(selectPhotoBtnFirst)
         addSubview(secondaryButtonsStack)
     }
     
@@ -37,22 +44,28 @@ class SettingsHeaderView: BaseView {
     }
     
     override func addConstraints() {
-        selectPhotoBtn1.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor,
+        selectPhotoBtnFirst.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor,
                        paddingTop: 16, paddingLeft: 16, paddingBottom: 16)
-        selectPhotoBtn1.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.45).isActive = true
+        selectPhotoBtnFirst.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.45).isActive = true
         
-        secondaryButtonsStack.anchor(top: topAnchor, left: selectPhotoBtn1.rightAnchor, bottom: bottomAnchor,
+        secondaryButtonsStack.anchor(top: topAnchor, left: selectPhotoBtnFirst.rightAnchor, bottom: bottomAnchor,
                                      right: rightAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 16, paddingRight: 16)
     }
     
-    func createButton() -> UIButton {
+    private func createButton() -> UIButton {
         let button = UIButton(type: .system)
-        button.setTitle("Select photo", for: .normal)
+        button.setTitle(K.Strings.selectPhoto, for: .normal)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.backgroundColor = .white
         button.imageView?.contentMode = .scaleToFill
         return button
+    }
+    
+    func setHeaderImage(image: UIImage?) {
+        if let buttonIndex = buttonToUpdate {
+            buttons[buttonIndex.rawValue].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
     }
     
 }

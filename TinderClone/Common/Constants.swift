@@ -21,6 +21,7 @@ struct K {
         static let cancel = "Cancel"
         static let done = "Done"
         static let settingsViewControllerTitle = "Settings"
+        static let selectPhoto = "Select photo"
     }
     struct UserDataParams {
         static let email = "email"
