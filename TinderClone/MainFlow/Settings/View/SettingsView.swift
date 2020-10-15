@@ -30,6 +30,7 @@ class SettingsView: BaseView {
     override func styleViews() {
         tableView.separatorStyle = .none
         tableView.tableHeaderView = self.headerView
+        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.reuseIdentifier)
         headerView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 300)
         
         cancelButton.setTitle(K.Strings.cancel, for: .normal)

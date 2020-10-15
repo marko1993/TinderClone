@@ -33,4 +33,13 @@ struct K {
     struct Error {
         static let avatarMissing = "Avatar needs to be added"
     }
+    
+    struct SettingsSections {
+        static let name = "Name"
+        static let profession = "Profession"
+        static let age = "Age"
+        static let bio = "Bio"
+        static let ageRange = "Seaking Age Range"
+    }
+    
 }

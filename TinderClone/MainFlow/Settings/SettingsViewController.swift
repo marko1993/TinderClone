@@ -22,6 +22,22 @@ class SettingsViewController: BaseViewController {
         setupView(settingsView)
         configureNavigationController()
         setupBindings()
+        viewModel.setSettingsData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        settingsView.tableView.delegate = nil
+        settingsView.tableView.dataSource = nil
+        viewModel
+            .settingsData
+            .bind(to: settingsView
+                .tableView
+                .rx
+                .items(cellIdentifier: SettingsTableViewCell.reuseIdentifier,
+                       cellType: SettingsTableViewCell.self)) { index, data, cell in
+                        cell.setup(with: data)
+                    
+        }.disposed(by: disposeBag)
     }
     
     func configureNavigationController() {
@@ -60,6 +76,8 @@ class SettingsViewController: BaseViewController {
     }
     
 }
+
+//MARK: - UIImagePickerControllerDelegate methods
 
 extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

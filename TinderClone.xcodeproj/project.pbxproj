@@ -16,6 +16,7 @@
 		AD0F3F0D25320ABC00B441C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */; };
 		AD0F3F102532114300B441C5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0F2532114300B441C5 /* AuthService.swift */; };
 		AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F11253211B300B441C5 /* FirebaseService.swift */; };
+		AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37DDF925379AFF00A7303C /* SliderView.swift */; };
 		AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */; };
 		AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */; };
 		AD4A31D72528E3FF0050E9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD4A31D62528E3FF0050E9CA /* Assets.xcassets */; };
@@ -33,6 +34,10 @@
 		AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */; };
 		AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D225331C63000D1AD4 /* SettingsView.swift */; };
 		AD56B0D525332A42000D1AD4 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */; };
+		AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */; };
+		AD56B0DF25363837000D1AD4 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0DE25363837000D1AD4 /* SettingsSections.swift */; };
+		AD56B0E125363EE0000D1AD4 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */; };
+		AD56B0E32536413D000D1AD4 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0E22536413D000D1AD4 /* SettingsData.swift */; };
 		AD8374532530D02C004C79EA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374522530D02C004C79EA /* HomeViewModel.swift */; };
 		AD8374552530D1D4004C79EA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374542530D1D4004C79EA /* Repository.swift */; };
 		AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374582530D61A004C79EA /* RegistrationViewController.swift */; };
@@ -60,6 +65,7 @@
 		AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD0F3F0F2532114300B441C5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AD0F3F11253211B300B441C5 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		AD37DDF925379AFF00A7303C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		AD4A31CA2528E3FD0050E9CA /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +85,10 @@
 		AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		AD56B0D225331C63000D1AD4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		AD56B0DE25363837000D1AD4 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		AD56B0E22536413D000D1AD4 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		AD8374522530D02C004C79EA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AD8374542530D1D4004C79EA /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AD8374582530D61A004C79EA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 				AD4A31F72529031F0050E9CA /* BaseStackView.swift */,
 				AD094AC62529F5760026FB61 /* BaseViewModel.swift */,
 				AD4A31EA2528E5DC0050E9CA /* BaseViewController.swift */,
+				AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -188,6 +199,7 @@
 				AD8374662530E0DC004C79EA /* CustomTextField.swift */,
 				AD9EE6882530E73A00E3FDBF /* CustomButton.swift */,
 				AD0F3F042531E4CD00B441C5 /* ButtonWithAttributedString.swift */,
+				AD37DDF925379AFF00A7303C /* SliderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -258,6 +270,7 @@
 			children = (
 				AD56B0CD25331C1B000D1AD4 /* SettingsViewController.swift */,
 				AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */,
+				AD56B0E22536413D000D1AD4 /* SettingsData.swift */,
 				AD56B0D125331C4F000D1AD4 /* View */,
 			);
 			path = Settings;
@@ -268,6 +281,8 @@
 			children = (
 				AD56B0D225331C63000D1AD4 /* SettingsView.swift */,
 				AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */,
+				AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */,
+				AD56B0DE25363837000D1AD4 /* SettingsSections.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -443,12 +458,15 @@
 			files = (
 				AD56B0D525332A42000D1AD4 /* SettingsHeaderView.swift in Sources */,
 				AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */,
+				AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */,
 				AD8374602530D6F1004C79EA /* LoginViewController.swift in Sources */,
 				AD0F3F102532114300B441C5 /* AuthService.swift in Sources */,
+				AD56B0DF25363837000D1AD4 /* SettingsSections.swift in Sources */,
 				AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */,
 				AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */,
 				AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */,
 				ADB820DC2529E3F000EC2E58 /* User.swift in Sources */,
+				AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */,
 				AD8374622530D728004C79EA /* LoginViewModel.swift in Sources */,
 				AD4A31ED2528E6E40050E9CA /* Extensions.swift in Sources */,
 				AD9EE6892530E73A00E3FDBF /* CustomButton.swift in Sources */,
@@ -471,11 +489,13 @@
 				AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */,
 				AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */,
 				AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */,
+				AD56B0E32536413D000D1AD4 /* SettingsData.swift in Sources */,
 				AD8374552530D1D4004C79EA /* Repository.swift in Sources */,
 				AD094AC72529F5760026FB61 /* BaseViewModel.swift in Sources */,
 				AD4A31F12528E8E80050E9CA /* HomeView.swift in Sources */,
 				AD4A31FA252903ED0050E9CA /* BaseView.swift in Sources */,
 				AD4A31E92528E5070050E9CA /* HomeViewController.swift in Sources */,
+				AD56B0E125363EE0000D1AD4 /* BaseTableViewCell.swift in Sources */,
 				AD83745E2530D681004C79EA /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
