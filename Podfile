@@ -14,5 +14,6 @@ target 'TinderClone' do
   pod 'Firebase/Core'
   pod 'SDWebImage', '~>4.4.2'
   pod 'JGProgressHUD', '~>2.0.3'
+  pod 'IQKeyboardManagerSwift'
 
 end
