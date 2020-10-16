@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum SettingsHeaderButtons: Int {
+enum SettingsHeaderButton: Int {
     case first = 0
     case second = 1
     case third = 2
@@ -21,11 +21,10 @@ class SettingsHeaderView: BaseView {
     lazy var selectPhotoBtnThird = createButton()
     lazy var secondaryButtonsStack = UIStackView(arrangedSubviews: [selectPhotoBtnSecond, selectPhotoBtnThird])
     lazy var buttons: [UIButton] = [selectPhotoBtnFirst, selectPhotoBtnSecond, selectPhotoBtnThird]
-    var buttonToUpdate: SettingsHeaderButtons?
+    var buttonToUpdate: SettingsHeaderButton?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .systemGroupedBackground
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +37,8 @@ class SettingsHeaderView: BaseView {
     }
     
     override func styleViews() {
+        backgroundColor = .systemGroupedBackground
+        
         secondaryButtonsStack.axis = .vertical
         secondaryButtonsStack.distribution = .fillEqually
         secondaryButtonsStack.spacing = 16
@@ -66,6 +67,11 @@ class SettingsHeaderView: BaseView {
         if let buttonIndex = buttonToUpdate {
             buttons[buttonIndex.rawValue].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
+    }
+    
+    func setHeaderImage(image: UIImage, for index: Int) {
+        if index >= buttons.count { return }
+        buttons[index].setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
 }

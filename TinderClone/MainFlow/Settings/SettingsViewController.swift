@@ -22,6 +22,7 @@ class SettingsViewController: BaseViewController {
         setupView(settingsView)
         configureNavigationController()
         setupBindings()
+        settingsView.isProgressVisible(true, title: K.Strings.fetchingData)
         viewModel.setSettingsData()
     }
     
@@ -36,7 +37,7 @@ class SettingsViewController: BaseViewController {
                 .items(cellIdentifier: SettingsTableViewCell.reuseIdentifier,
                        cellType: SettingsTableViewCell.self)) { index, data, cell in
                         cell.setup(with: data)
-                    
+                        cell.delegate = self
         }.disposed(by: disposeBag)
     }
     
@@ -44,6 +45,7 @@ class SettingsViewController: BaseViewController {
         navigationItem.title = K.Strings.settingsViewControllerTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: settingsView.cancelButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: settingsView.doneButton)
     }
@@ -66,11 +68,34 @@ class SettingsViewController: BaseViewController {
         }
         
         settingsView.doneButton.onTap(disposeBag: disposeBag) {
-            print(K.Strings.done)
+            self.settingsView.isProgressVisible(true, title: K.Strings.savingData)
+            self.viewModel.saveUser { [weak self] error in
+                self?.dismiss(animated: true, completion: nil)
+                self?.settingsView.isProgressVisible(false)
+            }
         }
+        
+        settingsView.logoutButton.onTap(disposeBag: disposeBag) {
+            self.viewModel.logout { error in
+                if error == nil {
+                    self.dismiss(animated: true, completion: nil)
+                    self.presentLoginViewController()
+                }
+            }
+        }
+        
+        viewModel.headerImagesObservable.subscribe(onNext: { images in
+            if let images = images {
+                images.enumerated().forEach { [weak self] index, image in
+                    self?.settingsView.headerView.setHeaderImage(image: image, for: index)
+                }
+            }
+            self.settingsView.isProgressVisible(false)
+        }).disposed(by: disposeBag)
+        
     }
     
-    private func presentImagePicker(headerButton: SettingsHeaderButtons) {
+    private func presentImagePicker(headerButton: SettingsHeaderButton) {
         settingsView.headerView.buttonToUpdate = headerButton
         present(imagePicker, animated: true, completion: nil)
     }
@@ -81,8 +106,28 @@ class SettingsViewController: BaseViewController {
 
 extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[.originalImage] as? UIImage
-        settingsView.headerView.setHeaderImage(image: selectedImage)
+        
         dismiss(animated: true, completion: nil)
+        settingsView.isProgressVisible(true, title: K.Strings.savingData)
+        
+        if let selectedImage = info[.originalImage] as? UIImage {
+            settingsView.headerView.setHeaderImage(image: selectedImage)
+            viewModel.uploadImage(image: selectedImage,imageIndex: settingsView.headerView.buttonToUpdate!.rawValue)
+            { [weak self] url, error in
+                self?.settingsView.isProgressVisible(false)
+            }
+        }
+    }
+}
+
+//MARK: - SettingsCellDelegate methods
+
+extension SettingsViewController: SettingsCellDelegate {
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateAgeRangeWith value: Int, forMin: Bool) {
+        self.viewModel.updateUser(with: value, forMin: forMin)
+    }
+    
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateWith value: String, for section: SettingsSection) {
+        self.viewModel.updateUser(with: value, for: section)
     }
 }

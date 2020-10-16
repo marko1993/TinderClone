@@ -9,6 +9,6 @@
 import Foundation
 
 struct SettingsData {
-    let section: SettingsSections
+    let section: SettingsSection
     let user: User
 }

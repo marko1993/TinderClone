@@ -8,15 +8,22 @@
 
 import UIKit
 
+protocol SettingsCellDelegate: class {
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateWith value: String, for section: SettingsSection)
+    func settingsCell(_ cell: SettingsTableViewCell, wantsToUpdateAgeRangeWith value: Int, forMin: Bool)
+}
+
 class SettingsTableViewCell: BaseTableViewCell {
     
     public static let reuseIdentifier = "SettingsTableViewCell"
+    weak var delegate: SettingsCellDelegate?
     
     let sectionHeaderLabel = CustomLabel(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
     let inputTextField = UITextField()
     let minSlider = SliderView(title: "Min", initialValue: 18)
     let maxSlider = SliderView(title: "Max", initialValue: 60)
     let slidersStack = UIStackView()
+    var section: SettingsSection?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,8 +40,10 @@ class SettingsTableViewCell: BaseTableViewCell {
     }
     
     override func styleViews() {
+        selectionStyle = .none
+        
         sectionHeaderLabel.font = UIFont.systemFont(ofSize: 24)
-        sectionHeaderLabel.backgroundColor = .systemGray6
+        sectionHeaderLabel.backgroundColor = .systemGray4
         
         slidersStack.axis = .vertical
         slidersStack.spacing = 16
@@ -45,6 +54,23 @@ class SettingsTableViewCell: BaseTableViewCell {
     
     override func addConstraints() {
         sectionHeaderLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor)
+    }
+    
+    override func setupBinding() {
+        inputTextField.rx.controlEvent(.editingDidEnd).subscribe { _ in
+            self.endEditing(true)
+            guard let value = self.inputTextField.text else { return }
+            guard let section = self.section else { return }
+            self.delegate?.settingsCell(self, wantsToUpdateWith: value, for: section)
+        }.disposed(by: disposeBag)
+        
+        minSlider.getSlider().rx.value.subscribe (onNext: { value in
+            self.delegate?.settingsCell(self, wantsToUpdateAgeRangeWith: Int(value), forMin: true)
+        }).disposed(by: disposeBag)
+        
+        maxSlider.getSlider().rx.value.subscribe (onNext: { value in
+            self.delegate?.settingsCell(self, wantsToUpdateAgeRangeWith: Int(value), forMin: false)
+        }).disposed(by: disposeBag)
     }
     
     private func addConstraints(to view: UIView) {
@@ -60,8 +86,27 @@ class SettingsTableViewCell: BaseTableViewCell {
             addSubview(inputTextField)
             addConstraints(to: inputTextField)
         }
+        self.section = data.section
+        updateViews(with: data)
+    }
+    
+    private func updateViews(with data: SettingsData) {
         sectionHeaderLabel.text = data.section.description
         inputTextField.placeholder = "Enter \(data.section.description)..."
+        
+        switch data.section {
+        case .name:
+            inputTextField.text = data.user.name
+        case .profession:
+            inputTextField.text = data.user.profession
+        case .age:
+            inputTextField.text = "\(data.user.age)"
+        case .bio:
+            inputTextField.text = data.user.bio
+        case .ageRange:
+            minSlider.setSliderValue(value: Float(data.user.minSeekingAge))
+            maxSlider.setSliderValue(value: Float(data.user.maxSeekingAge))
+        }
     }
     
 }

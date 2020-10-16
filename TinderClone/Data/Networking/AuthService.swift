@@ -32,7 +32,7 @@ struct AuthService {
                 guard let uid = result?.user.uid else {return}
                 let data = [K.UserDataParams.email: credentials.email,
                             K.UserDataParams.fullName: credentials.fullName,
-                            K.UserDataParams.imageUrl: url!,
+                            K.UserDataParams.imageURLs: [url!],
                             K.UserDataParams.uid: uid,
                             K.UserDataParams.age: 18] as [String : Any]
                 Firestore.firestore().collection("users").document(uid).setData(data) { setDataError in

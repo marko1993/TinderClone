@@ -36,7 +36,7 @@
 		AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D225331C63000D1AD4 /* SettingsView.swift */; };
 		AD56B0D525332A42000D1AD4 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */; };
 		AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */; };
-		AD56B0DF25363837000D1AD4 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0DE25363837000D1AD4 /* SettingsSections.swift */; };
+		AD56B0DF25363837000D1AD4 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0DE25363837000D1AD4 /* SettingsSection.swift */; };
 		AD56B0E125363EE0000D1AD4 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */; };
 		AD56B0E32536413D000D1AD4 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0E22536413D000D1AD4 /* SettingsData.swift */; };
 		AD8374532530D02C004C79EA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374522530D02C004C79EA /* HomeViewModel.swift */; };
@@ -88,7 +88,7 @@
 		AD56B0D225331C63000D1AD4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		AD56B0DE25363837000D1AD4 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		AD56B0DE25363837000D1AD4 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		AD56B0E22536413D000D1AD4 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
 		AD8374522530D02C004C79EA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 				AD56B0D225331C63000D1AD4 /* SettingsView.swift */,
 				AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */,
 				AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */,
-				AD56B0DE25363837000D1AD4 /* SettingsSections.swift */,
+				AD56B0DE25363837000D1AD4 /* SettingsSection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */,
 				AD8374602530D6F1004C79EA /* LoginViewController.swift in Sources */,
 				AD0F3F102532114300B441C5 /* AuthService.swift in Sources */,
-				AD56B0DF25363837000D1AD4 /* SettingsSections.swift in Sources */,
+				AD56B0DF25363837000D1AD4 /* SettingsSection.swift in Sources */,
 				AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */,
 				AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */,
 				AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */,

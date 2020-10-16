@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SettingsSections: Int, CaseIterable {
+enum SettingsSection: Int, CaseIterable {
     case name
     case profession
     case age

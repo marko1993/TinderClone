@@ -71,4 +71,8 @@ class SliderView: BaseView {
         slider.value = value
     }
     
+    func getSlider() -> UISlider {
+        return slider
+    }
+    
 }

@@ -11,6 +11,11 @@ import Firebase
 
 struct FirebaseService {
     
+    static func saveUserData(user: User, completionHandler: @escaping (Error?) -> Void) {
+        let data = getDataFromUser(user)
+        Firestore.firestore().collection("users").document(user.uid).setData(data, completion: completionHandler)
+    }
+    
     static func uploadImage(image: UIImage, completionHandler: @escaping (String?, Error?) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.75) else {return}
         let fileName = NSUUID().uuidString
@@ -57,6 +62,18 @@ struct FirebaseService {
             })
             completionHandler(users, nil)
         }
+    }
+    
+    private static func getDataFromUser(_ user: User) -> [String: Any] {
+        return [K.UserDataParams.email: user.email,
+                K.UserDataParams.fullName: user.name,
+                K.UserDataParams.imageURLs: user.images,
+                K.UserDataParams.uid: user.uid,
+                K.UserDataParams.age: user.age,
+                K.UserDataParams.profession: user.profession,
+                K.UserDataParams.minSeekingAge: user.minSeekingAge,
+                K.UserDataParams.maxSeekingAge: user.maxSeekingAge,
+                K.UserDataParams.bio: user.bio] as [String : Any]
     }
     
 }

@@ -51,4 +51,8 @@ class BaseViewModel {
         }
     }
     
+    func saveUser(user: User, completionHandler: @escaping (Error?) -> Void) {
+        FirebaseService.saveUserData(user: user, completionHandler: completionHandler)
+    }
+    
 }

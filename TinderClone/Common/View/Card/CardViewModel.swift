@@ -13,10 +13,12 @@ class CardViewModel: BaseViewModel {
     let user: User
     private var imageIndex = 0
     var currentImageURL: URL?
+    var imageURLs: [URL]?
     
     init(user: User) {
         self.user = user
-        self.currentImageURL = URL(string: user.profileImageUrl)
+        self.currentImageURL = user.imageURLs.first
+        self.imageURLs = user.imageURLs
     }
     
     func getUserInfoTextAttributedString() -> NSAttributedString {
@@ -37,7 +39,7 @@ class CardViewModel: BaseViewModel {
         if imageIndex >= user.images.count {
             imageIndex = 0
         }
-        self.currentImageURL = user.images[imageIndex]
+        self.currentImageURL = user.imageURLs[imageIndex]
         return self.currentImageURL
     }
     
@@ -46,7 +48,7 @@ class CardViewModel: BaseViewModel {
         if imageIndex <= -1 {
             imageIndex = user.images.count - 1
         }
-        self.currentImageURL = user.images[imageIndex]
+        self.currentImageURL = user.imageURLs[imageIndex]
         return self.currentImageURL
     }
     

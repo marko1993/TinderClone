@@ -14,6 +14,7 @@ struct K {
         static let fullName = "Full Name"
         static let password = "Password"
         static let login = "Log In"
+        static let logout = "Log Out"
         static let register = "Register"
         static let signUp = "Sign Up"
         static let dontHaveAccount = "Don't have an account? "
@@ -22,13 +23,19 @@ struct K {
         static let done = "Done"
         static let settingsViewControllerTitle = "Settings"
         static let selectPhoto = "Select photo"
+        static let savingData = "Saving data..."
+        static let fetchingData = "Fetching data..."
     }
     struct UserDataParams {
         static let email = "email"
         static let fullName = "fullName"
-        static let imageUrl = "imageUrl"
+        static let imageURLs = "imageURLs"
         static let uid = "uid"
         static let age = "age"
+        static let minSeekingAge = "minSeekingAge"
+        static let maxSeekingAge = "maxSeekingAge"
+        static let profession = "profession"
+        static let bio = "bio"
     }
     struct Error {
         static let avatarMissing = "Avatar needs to be added"
