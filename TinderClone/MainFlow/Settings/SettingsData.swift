@@ -10,4 +10,5 @@ import Foundation
 
 struct SettingsData {
     let section: SettingsSections
+    let user: User
 }

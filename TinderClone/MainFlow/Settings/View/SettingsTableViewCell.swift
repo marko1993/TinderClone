@@ -12,7 +12,7 @@ class SettingsTableViewCell: BaseTableViewCell {
     
     public static let reuseIdentifier = "SettingsTableViewCell"
     
-    let sectionHeaderLabel = UILabel()
+    let sectionHeaderLabel = CustomLabel(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
     let inputTextField = UITextField()
     let minSlider = SliderView(title: "Min", initialValue: 18)
     let maxSlider = SliderView(title: "Max", initialValue: 60)
@@ -44,7 +44,7 @@ class SettingsTableViewCell: BaseTableViewCell {
     }
     
     override func addConstraints() {
-        sectionHeaderLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingLeft: 16, paddingRight: 16)
+        sectionHeaderLabel.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor)
     }
     
     private func addConstraints(to view: UIView) {

@@ -28,16 +28,8 @@ class HomeViewModel: BaseViewModel {
         return cards.asObservable()
     }
     
-    func isUserLoggedIn() -> Bool {
-        if Auth.auth().currentUser == nil {
-            return false
-        } else {
-            return true
-        }
-    }
-    
     func logoutUser() {
-        Repository.shared().logoutUser { [weak self] error in
+        logout { [weak self] error in
             if error != nil {
                 self?.logoutSuccessful.accept(false)
             } else {
@@ -47,8 +39,7 @@ class HomeViewModel: BaseViewModel {
     }
     
     func getCurrentUser() {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        Repository.shared().getUser(withUid: uid) { [weak self] user, error in
+        getUser { [weak self] user, error in
             if let error = error {
                 print(error)
                 return
@@ -58,7 +49,7 @@ class HomeViewModel: BaseViewModel {
     }
     
     func getUsers() {
-        Repository.shared().getUsers { [weak self] users, error in
+        getAllUsers { [weak self] users, error in
             if let error = error {
                 print(error)
                 return

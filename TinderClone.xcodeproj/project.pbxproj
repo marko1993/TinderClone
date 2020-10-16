@@ -17,6 +17,7 @@
 		AD0F3F102532114300B441C5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0F2532114300B441C5 /* AuthService.swift */; };
 		AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F11253211B300B441C5 /* FirebaseService.swift */; };
 		AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37DDF925379AFF00A7303C /* SliderView.swift */; };
+		AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */; };
 		AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */; };
 		AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */; };
 		AD4A31D72528E3FF0050E9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD4A31D62528E3FF0050E9CA /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		AD0F3F0F2532114300B441C5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AD0F3F11253211B300B441C5 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		AD37DDF925379AFF00A7303C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AD4A31CA2528E3FD0050E9CA /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				AD9EE6882530E73A00E3FDBF /* CustomButton.swift */,
 				AD0F3F042531E4CD00B441C5 /* ButtonWithAttributedString.swift */,
 				AD37DDF925379AFF00A7303C /* SliderView.swift */,
+				AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */,
 				AD4A31EF2528E7300050E9CA /* HomeNavigationStackView.swift in Sources */,
 				AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */,
+				AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */,
 				AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */,
 				AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */,
 				AD56B0E32536413D000D1AD4 /* SettingsData.swift in Sources */,
