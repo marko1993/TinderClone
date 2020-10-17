@@ -9,15 +9,18 @@
 import UIKit
 
 class BottomControlsStackView: BaseStackView {
-    //MARK: - Properites
-    let refreshButton = UIButton(type: .system)
-    let dislikeButton = UIButton(type: .system)
-    let superLikeButton = UIButton(type: .system)
-    let likeButton = UIButton(type: .system)
-    let boostButton = UIButton(type: .system)
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    var buttons: [UIButton]
+    
+    init(buttonImages: [UIImage]) {
+        buttons = []
+        super.init(frame: .zero)
+        buttonImages.forEach { image in
+            let button = UIButton(type: .system)
+            button.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+            buttons.append(button)
+            addArrangedSubview(button)
+        }
     }
     
     required init(coder: NSCoder) {
@@ -25,19 +28,11 @@ class BottomControlsStackView: BaseStackView {
     }
     
     override func addSubviews() {
-        [refreshButton, dislikeButton, superLikeButton,
-         likeButton, boostButton].forEach { view in
-            addArrangedSubview(view)
-        }
+        
     }
     
     override func styleViews() {
-        distribution = .fillEqually  
-        refreshButton.setImage(#imageLiteral(resourceName: "refresh_circle").withRenderingMode(.alwaysOriginal), for: .normal)
-        dislikeButton.setImage(#imageLiteral(resourceName: "dismiss_circle").withRenderingMode(.alwaysOriginal), for: .normal)
-        superLikeButton.setImage(#imageLiteral(resourceName: "super_like_circle").withRenderingMode(.alwaysOriginal), for: .normal)
-        likeButton.setImage(#imageLiteral(resourceName: "like_circle").withRenderingMode(.alwaysOriginal), for: .normal)
-        boostButton.setImage(#imageLiteral(resourceName: "boost_circle").withRenderingMode(.alwaysOriginal), for: .normal)
+        distribution = .fillEqually
     }
     
     override func addConstraints() {

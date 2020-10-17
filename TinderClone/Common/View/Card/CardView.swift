@@ -18,17 +18,16 @@ enum SwipeDirection: Int {
 
 class CardView: BaseView {
     
-    private let viewModel: CardViewModel
+    let viewModel: CardViewModel
     internal let gradient = CAGradientLayer()
     private let imageView = UIImageView()
     private let infoLabel = UILabel()
-    private lazy var infoButton = UIButton()
-    private let barStack = UIStackView()
+    lazy var infoButton = UIButton()
+    private lazy var barStack = SegmentedBarView(numberOfSegments: viewModel.imageURLs?.count ?? 0)
     
     init(viewModel: CardViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
-        configureBarStackView()
     }
     
     override func layoutSubviews() {
@@ -54,13 +53,10 @@ class CardView: BaseView {
         infoButton.setDimensions(height: 40, width: 40)
         infoButton.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
         
-        barStack.spacing = 4
-        barStack.distribution = .fillEqually
-        
         imageView.contentMode = .scaleAspectFill
         imageView.sd_setImage(with: viewModel.currentImageURL)
         
-        infoLabel.attributedText = viewModel.getUserInfoTextAttributedString()
+        infoLabel.attributedText = viewModel.getUserInfoTextAttributedString(user: viewModel.user, textSize: 32, attributedTextSize: 24, textColor: .white)
         infoLabel.numberOfLines = 2
     }
     
@@ -93,22 +89,6 @@ class CardView: BaseView {
             }).disposed(by: disposeBag)
         addGestureRecognizer(tap)
     }
-    
-    private func configureBarStackView() {
-        viewModel.imageURLs?.forEach({ _ in
-            let barView = UIView()
-            barView.backgroundColor = .barDeselectedColor
-            barView.layer.cornerRadius = 5
-            barStack.addArrangedSubview(barView)
-        })
-        barStack.arrangedSubviews.first?.backgroundColor = .white
-    }
-    
-    private func adjustBarStackViews() {
-        barStack.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor })
-        barStack.arrangedSubviews[viewModel.getImageIndex()].backgroundColor = .white
-    }
-    
     //MARK: - Actions
     
     private func handlePanGesture(sender: UIPanGestureRecognizer) {
@@ -132,7 +112,7 @@ class CardView: BaseView {
         } else {
             imageView.sd_setImage(with: viewModel.showPreviousPhoto())
         }
-        adjustBarStackViews()
+        barStack.adjustBarStackViews(position: viewModel.getImageIndex())
     }
     
 }

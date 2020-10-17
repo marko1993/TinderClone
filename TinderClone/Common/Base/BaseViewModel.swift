@@ -55,4 +55,17 @@ class BaseViewModel {
         FirebaseService.saveUserData(user: user, completionHandler: completionHandler)
     }
     
+    func getUserInfoTextAttributedString(user: User, textSize: CGFloat, attributedTextSize: CGFloat, textColor: UIColor) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: user.name,
+                                                       attributes: [
+                                                        .font : UIFont.systemFont(ofSize: textSize, weight: .heavy),
+                                                        .foregroundColor: textColor])
+        
+        attributedText.append(NSAttributedString(string: String(format: "  %d", user.age), attributes: [
+        .font : UIFont.systemFont(ofSize: attributedTextSize),
+        .foregroundColor: textColor]))
+        
+        return attributedText
+    }
+    
 }

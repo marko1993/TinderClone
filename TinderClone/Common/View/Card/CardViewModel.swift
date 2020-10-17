@@ -21,19 +21,6 @@ class CardViewModel: BaseViewModel {
         self.imageURLs = user.imageURLs
     }
     
-    func getUserInfoTextAttributedString() -> NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: user.name,
-                                                       attributes: [
-                                                        .font : UIFont.systemFont(ofSize: 32, weight: .heavy),
-                                                        .foregroundColor: UIColor.white])
-        
-        attributedText.append(NSAttributedString(string: String(format: "  %d", user.age), attributes: [
-        .font : UIFont.systemFont(ofSize: 24),
-        .foregroundColor: UIColor.white]))
-        
-        return attributedText
-    }
-    
     func showNextPhoto() -> URL? {
         imageIndex += 1
         if imageIndex >= user.images.count {

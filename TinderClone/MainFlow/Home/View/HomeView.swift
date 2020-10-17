@@ -11,7 +11,7 @@ import UIKit
 class HomeView: BaseView {
     
     let navigationStackView = HomeNavigationStackView()
-    let bottomStackView = BottomControlsStackView()
+    let bottomStackView = BottomControlsStackView(buttonImages: [#imageLiteral(resourceName: "refresh_circle"), #imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "super_like_circle"), #imageLiteral(resourceName: "like_circle"), #imageLiteral(resourceName: "boost_circle")])
     let deckView = UIView()
     let stack = UIStackView()
     

@@ -30,13 +30,14 @@ class HomeViewController: BaseViewController {
     private func configureCards(cards: [CardView]) {
         cards.forEach { cardView in
             homeView.deckView.addSubview(cardView)
+            setupBinding(for: cardView)
             cardView.fillSuperview()
         }
     }
     
     private func setupBinding() {
         homeView.navigationStackView.messageButton.onTap(disposeBag: disposeBag) {
-            self.viewModel.logoutUser()
+            
         }
         
         homeView.navigationStackView.settingsButton.onTap(disposeBag: disposeBag) {
@@ -65,6 +66,14 @@ class HomeViewController: BaseViewController {
                 self.configureCards(cards: cards)
             }
         }).disposed(by: disposeBag)
+    }
+    
+    private func setupBinding(for cardView: CardView) {
+        cardView.infoButton.onTap(disposeBag: disposeBag) {
+            let controller = ProfileViewController(viewModel: ProfileViewModel(user: cardView.viewModel.user))
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
 }

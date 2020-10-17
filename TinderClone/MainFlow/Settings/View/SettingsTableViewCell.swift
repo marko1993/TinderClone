@@ -81,9 +81,11 @@ class SettingsTableViewCell: BaseTableViewCell {
         setupView()
         if data.section == .ageRange {
             addSubview(slidersStack)
+            inputTextField.removeFromSuperview()
             addConstraints(to: slidersStack)
         } else {
             addSubview(inputTextField)
+            slidersStack.removeFromSuperview()
             addConstraints(to: inputTextField)
         }
         self.section = data.section

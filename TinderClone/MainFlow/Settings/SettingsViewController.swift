@@ -27,6 +27,7 @@ class SettingsViewController: BaseViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         settingsView.tableView.delegate = nil
         settingsView.tableView.dataSource = nil
         viewModel
