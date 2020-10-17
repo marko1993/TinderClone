@@ -52,4 +52,8 @@ class CardViewModel: BaseViewModel {
         return self.currentImageURL
     }
     
+    func getImageIndex() -> Int {
+        return imageIndex
+    }
+    
 }

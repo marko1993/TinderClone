@@ -33,8 +33,8 @@ class HomeView: BaseView {
     override func styleViews() {
         backgroundColor = .white
         
-        deckView.backgroundColor = .systemPink
-        deckView.layer.cornerRadius = 5
+        deckView.backgroundColor = .white
+        deckView.layer.cornerRadius = 10
         
         stack.axis = .vertical
         stack.isLayoutMarginsRelativeArrangement = true
