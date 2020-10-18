@@ -8,10 +8,12 @@
 
 import UIKit
 import RxSwift
+import JGProgressHUD
 
 class BaseView: UIView {
     
     let disposeBag = DisposeBag()
+    let progress = JGProgressHUD(style: .dark)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,6 +45,17 @@ class BaseView: UIView {
     
     func setupBinding() {
         
+    }
+    
+    func isProgressVisible(_ isVisible: Bool, title: String? = "") {
+        if let title = title {
+            progress.textLabel.text = title
+        }
+        if isVisible {
+            progress.show(in: self)
+        } else {
+            progress.dismiss()
+        }
     }
     
 }

@@ -50,6 +50,7 @@ class HomeViewModel: BaseViewModel {
     func getCurrentUser() {
         getUser { [weak self] user, error in
             if let error = error {
+                self?.user.accept(nil)
                 print(error)
                 return
             }

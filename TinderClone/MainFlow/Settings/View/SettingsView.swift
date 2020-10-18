@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JGProgressHUD
 
 class SettingsView: BaseView {
     
@@ -16,7 +15,6 @@ class SettingsView: BaseView {
     var cancelButton = UIButton(type: .system)
     var doneButton = UIButton(type: .system)
     var logoutButton = UIButton(type: .system)
-    let progress = JGProgressHUD(style: .dark)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,17 +46,6 @@ class SettingsView: BaseView {
     override func addConstraints() {
         tableView.anchor(top: topAnchor, left: leftAnchor, bottom: logoutButton.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         logoutButton.anchor(top: tableView.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 16, paddingBottom: 16, height: 50)
-    }
-    
-    func isProgressVisible(_ isVisible: Bool, title: String? = "") {
-        if let title = title {
-            progress.textLabel.text = title
-        }
-        if isVisible {
-            progress.show(in: self)
-        } else {
-            progress.dismiss()
-        }
     }
     
 }

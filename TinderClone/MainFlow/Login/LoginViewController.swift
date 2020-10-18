@@ -25,39 +25,33 @@ class LoginViewController: BaseViewController {
     }
     
     func setupBindings() {
-        loginView
-            .loginButton
-            .onTap(disposeBag: disposeBag) {
-                guard let email = self.loginView.emailTextField.text else {return}
-                guard let password = self.loginView.passwordTextField.text else {return}
-                
-                self.viewModel.logUserIn(email: email, password: password) { [weak self] error in
-                    if let error = error {
-                        self?.loginView.setErrorLabel(text: error.localizedDescription)
-                        return
-                    }
-                    self?.dismiss(animated: true, completion: nil)
+        loginView.loginButton.onTap(disposeBag: disposeBag) {
+            guard let email = self.loginView.emailTextField.text else {return}
+            guard let password = self.loginView.passwordTextField.text else {return}
+            
+            self.loginView.isProgressVisible(true, title: K.Strings.savingData)
+            self.viewModel.logUserIn(email: email, password: password) { [weak self] error in
+                if let error = error {
+                    self?.loginView.setErrorLabel(text: error.localizedDescription)
+                    return
                 }
+                self?.loginView.isProgressVisible(false)
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
        
-        loginView
-            .goToRegistrationButton
-            .onTap(disposeBag: disposeBag) {
-                self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
+        loginView.goToRegistrationButton.onTap(disposeBag: disposeBag) {
+            self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
         }
         
-        loginView
-            .emailTextField
-            .onValueChanged(disposeBag: disposeBag) { text in
-                self.viewModel.email = text
-                self.onValueInTextFieldChanged()
+        loginView.emailTextField.onValueChanged(disposeBag: disposeBag) { text in
+            self.viewModel.email = text
+            self.onValueInTextFieldChanged()
         }
         
-        loginView
-            .passwordTextField
-            .onValueChanged(disposeBag: disposeBag) { text in
-                self.viewModel.password = text
-                self.onValueInTextFieldChanged()
+        loginView.passwordTextField.onValueChanged(disposeBag: disposeBag) { text in
+            self.viewModel.password = text
+            self.onValueInTextFieldChanged()
         }
         
     }

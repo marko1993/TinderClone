@@ -24,6 +24,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupView(homeView)
         setupBinding()
+        homeView.isProgressVisible(true, title: K.Strings.fetchingData)
         viewModel.getCurrentUser()
     }
     
@@ -59,6 +60,8 @@ class HomeViewController: BaseViewController {
         viewModel.userObservable.subscribe(onNext: { user in
             if user != nil {
                 self.viewModel.getUsers()
+            } else {
+                self.homeView.isProgressVisible(false)
             }
         }).disposed(by: disposeBag)
         
@@ -66,6 +69,7 @@ class HomeViewController: BaseViewController {
             if let cards = cards {
                 self.configureCards(cards: cards)
             }
+            self.homeView.isProgressVisible(false)
         }).disposed(by: disposeBag)
         
         homeView.getBottomStackButton(button: .refreshButton).onTap(disposeBag: disposeBag) {

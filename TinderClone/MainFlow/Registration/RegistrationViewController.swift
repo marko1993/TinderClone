@@ -37,7 +37,7 @@ class RegistrationViewController: BaseViewController {
                 self.registrationView.setErrorLabel(text: K.Error.avatarMissing)
                 return
             }
-            
+            self.registrationView.isProgressVisible(true, title: K.Strings.savingData)
             let credentials = AuthCredentials(email: email, password: password, fullName: fullName, profileImage: profileimage)
             
             self.viewModel.registerUser(with: credentials) { [weak self] error in
@@ -45,6 +45,7 @@ class RegistrationViewController: BaseViewController {
                     self?.registrationView.setErrorLabel(text: error.localizedDescription)
                     return
                 }
+                self?.registrationView.isProgressVisible(false)
                 self?.dismiss(animated: true, completion: nil)
             }
         }
