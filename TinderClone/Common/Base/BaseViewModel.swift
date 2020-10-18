@@ -41,8 +41,8 @@ class BaseViewModel {
         }
     }
     
-    func getAllUsers(completionHandler: @escaping ([User]?, Error?) -> Void) {
-        Repository.shared().getUsers { users, error in
+    func getAllUsers(forCurrent user: User, completionHandler: @escaping ([User]?, Error?) -> Void) {
+        Repository.shared().getUsers(forCurrentUser: user) { users, error in
             if let error = error {
                 completionHandler(nil, error)
                 return

@@ -46,8 +46,8 @@ class Repository {
         FirebaseService.fetchUser(withUid: uid, completionHandler: completionHandler)
     }
     
-    func getUsers(completionHandler: @escaping ([User]?, Error?) -> Void) {
-        FirebaseService.fetchUsers(completionHandler: completionHandler)
+    func getUsers(forCurrentUser user: User, completionHandler: @escaping ([User]?, Error?) -> Void) {
+        FirebaseService.fetchUsers(forCurrentUser: user, completionHandler: completionHandler)
     }
     
     func saveUserData(user: User, completionHandler: @escaping (Error?) -> Void) {

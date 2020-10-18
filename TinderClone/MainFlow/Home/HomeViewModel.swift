@@ -58,7 +58,8 @@ class HomeViewModel: BaseViewModel {
     }
     
     func getUsers() {
-        getAllUsers { [weak self] users, error in
+        guard let user = user.value else { return }
+        getAllUsers(forCurrent: user) { [weak self] users, error in
             if let error = error {
                 print(error)
                 return

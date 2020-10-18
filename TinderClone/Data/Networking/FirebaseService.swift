@@ -62,19 +62,23 @@ class FirebaseService: BaseService {
         }
     }
     
-    static func fetchUsers(completionHandler: @escaping ([User]?, Error?) -> Void) {
+    static func fetchUsers(forCurrentUser user: User, completionHandler: @escaping ([User]?, Error?) -> Void) {
         var users = [User]()
         
-        getCollection(K.Collection.users).getDocuments { (snapshot, error) in
+        let query = getCollection(K.Collection.users)
+            .whereField(K.UserDataParams.age, isGreaterThanOrEqualTo: user.minSeekingAge)
+            .whereField(K.UserDataParams.age, isLessThanOrEqualTo: user.maxSeekingAge)
+        
+        query.getDocuments { (snapshot, error) in
             if let error = error {
                 completionHandler(nil, error)
                 return
             }
-            snapshot?.documents.forEach({ document in
-                let data = document.data()
-                let user = User(data: data)
-                users.append(user)
-            })
+            snapshot?.documents
+                .map({ User(data: $0.data()) })
+                .filter({ $0.uid != user.uid })
+                .forEach({ users.append($0)} )
+            
             completionHandler(users, nil)
         }
     }

@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupView(homeView)
         setupBinding()
-        viewModel.getUsers()
+        viewModel.getCurrentUser()
     }
     
     private func configureCards(cards: [CardView]) {
@@ -57,8 +57,8 @@ class HomeViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
         viewModel.userObservable.subscribe(onNext: { user in
-            if let user = user {
-                print(user)
+            if user != nil {
+                self.viewModel.getUsers()
             }
         }).disposed(by: disposeBag)
         
