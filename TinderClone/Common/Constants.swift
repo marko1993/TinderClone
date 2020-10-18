@@ -25,6 +25,8 @@ struct K {
         static let selectPhoto = "Select photo"
         static let savingData = "Saving data..."
         static let fetchingData = "Fetching data..."
+        static let min = "Min"
+        static let max = "Max"
     }
     struct UserDataParams {
         static let email = "email"

@@ -20,8 +20,8 @@ class SettingsTableViewCell: BaseTableViewCell {
     
     let sectionHeaderLabel = CustomLabel(insets: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
     let inputTextField = UITextField()
-    let minSlider = SliderView(title: "Min", initialValue: 18)
-    let maxSlider = SliderView(title: "Max", initialValue: 60)
+    let minSlider = SliderView(title: K.Strings.min, initialValue: 18)
+    let maxSlider = SliderView(title: K.Strings.max, initialValue: 60)
     let slidersStack = UIStackView()
     var section: SettingsSection?
     
@@ -107,7 +107,9 @@ class SettingsTableViewCell: BaseTableViewCell {
             inputTextField.text = data.user.bio
         case .ageRange:
             minSlider.setSliderValue(value: Float(data.user.minSeekingAge))
+            minSlider.setSliderLabel(title: K.Strings.min, value: Float(data.user.minSeekingAge))
             maxSlider.setSliderValue(value: Float(data.user.maxSeekingAge))
+            maxSlider.setSliderLabel(title: K.Strings.max, value: Float(data.user.maxSeekingAge))
         }
     }
     

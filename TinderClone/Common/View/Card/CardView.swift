@@ -54,6 +54,8 @@ class CardView: BaseView {
         layer.cornerRadius = 10
         clipsToBounds = true
         
+        imageView.backgroundColor = .white
+        
         infoButton.setDimensions(height: 40, width: 40)
         infoButton.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
         
