@@ -28,6 +28,7 @@ class HomeViewController: BaseViewController {
     }
     
     private func configureCards(cards: [CardView]) {
+        if !homeView.deckView.subviews.isEmpty { return }
         cards.forEach { cardView in
             homeView.deckView.addSubview(cardView)
             setupBinding(for: cardView)
@@ -66,6 +67,19 @@ class HomeViewController: BaseViewController {
                 self.configureCards(cards: cards)
             }
         }).disposed(by: disposeBag)
+        
+        homeView.getBottomStackButton(button: .refreshButton).onTap(disposeBag: disposeBag) {
+            print("refresh")
+        }
+        
+        homeView.getBottomStackButton(button: .dislikeButton).onTap(disposeBag: disposeBag) {
+            self.saveSwipe(direction: .left)
+        }
+        
+        homeView.getBottomStackButton(button: .likeButton).onTap(disposeBag: disposeBag) {
+            self.saveSwipe(direction: .right)
+        }
+        
     }
     
     private func setupBinding(for cardView: CardView) {
@@ -73,6 +87,14 @@ class HomeViewController: BaseViewController {
             let controller = ProfileViewController(viewModel: ProfileViewModel(user: cardView.viewModel.user))
             controller.modalPresentationStyle = .fullScreen
             self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    private func saveSwipe(direction: SwipeDirection) {
+        self.homeView.performSwipe(direction: direction)
+        let topCard = self.viewModel.popCardOnTop()
+        if let topCard = topCard {
+            self.viewModel.saveSwipe(for: topCard.viewModel.user, direction: direction)
         }
     }
     

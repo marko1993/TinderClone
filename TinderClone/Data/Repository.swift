@@ -50,4 +50,8 @@ class Repository {
         FirebaseService.fetchUsers(completionHandler: completionHandler)
     }
     
+    func saveSwipe(for user: User, direction: SwipeDirection) {
+        FirebaseService.saveSwipe(for: user, direction: direction)
+    }
+    
 }

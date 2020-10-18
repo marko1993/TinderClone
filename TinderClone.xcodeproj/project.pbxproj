@@ -16,6 +16,7 @@
 		AD0F3F0D25320ABC00B441C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */; };
 		AD0F3F102532114300B441C5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0F2532114300B441C5 /* AuthService.swift */; };
 		AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F11253211B300B441C5 /* FirebaseService.swift */; };
+		AD28FF93253C93D800F6140D /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28FF92253C93D800F6140D /* BaseService.swift */; };
 		AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37DDF925379AFF00A7303C /* SliderView.swift */; };
 		AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */; };
 		AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD0F3F0F2532114300B441C5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AD0F3F11253211B300B441C5 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		AD28FF92253C93D800F6140D /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		AD37DDF925379AFF00A7303C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AD4A31CA2528E3FD0050E9CA /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				AD4A31EA2528E5DC0050E9CA /* BaseViewController.swift */,
 				AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */,
 				ADD39110253B604800DCF3B3 /* BaseCollectionViewCell.swift */,
+				AD28FF92253C93D800F6140D /* BaseService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				AD4A31E92528E5070050E9CA /* HomeViewController.swift in Sources */,
 				AD56B0E125363EE0000D1AD4 /* BaseTableViewCell.swift in Sources */,
 				AD83745E2530D681004C79EA /* RegistrationView.swift in Sources */,
+				AD28FF93253C93D800F6140D /* BaseService.swift in Sources */,
 				ADD39105253B443C00DCF3B3 /* UILabel+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

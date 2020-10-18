@@ -16,7 +16,7 @@ struct AuthCredentials {
     let profileImage: UIImage
 }
 
-struct AuthService {
+class AuthService: BaseService {
     
     static func registerUser(with credentials: AuthCredentials, completionHandler: @escaping (String?, Error?) -> Void) {
         FirebaseService.uploadImage(image: credentials.profileImage) { url, uploadImageError in
@@ -35,7 +35,7 @@ struct AuthService {
                             K.UserDataParams.imageURLs: [url!],
                             K.UserDataParams.uid: uid,
                             K.UserDataParams.age: 18] as [String : Any]
-                Firestore.firestore().collection("users").document(uid).setData(data) { setDataError in
+                getCollection(K.Collection.users).document(uid).setData(data) { setDataError in
                     if let setDataError = setDataError {
                         completionHandler(nil, setDataError)
                         return

@@ -68,4 +68,8 @@ class BaseViewModel {
         return attributedText
     }
     
+    func saveSwipe(for user: User, direction: SwipeDirection) {
+        Repository.shared().saveSwipe(for: user, direction: direction)
+    }
+    
 }

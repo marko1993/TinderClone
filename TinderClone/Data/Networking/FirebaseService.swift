@@ -9,11 +9,11 @@
 import Foundation
 import Firebase
 
-struct FirebaseService {
+class FirebaseService: BaseService {
     
     static func saveUserData(user: User, completionHandler: @escaping (Error?) -> Void) {
         let data = getDataFromUser(user)
-        Firestore.firestore().collection("users").document(user.uid).setData(data, completion: completionHandler)
+        getCollection(K.Collection.users).document(user.uid).setData(data, completion: completionHandler)
     }
     
     static func uploadImage(image: UIImage, completionHandler: @escaping (String?, Error?) -> Void) {
@@ -36,8 +36,23 @@ struct FirebaseService {
         }
     }
     
+    static func saveSwipe(for user: User, direction: SwipeDirection) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        getCollection(K.Collection.swipes).document(uid).getDocument { snapshot, error in
+            if error != nil {
+                return
+            }
+            let data = [user.uid: direction == .right]
+            if snapshot?.exists == true {
+                getCollection(K.Collection.swipes).document(uid).updateData(data)
+            } else {
+                getCollection(K.Collection.swipes).document(uid).setData(data)
+            }
+        }
+    }
+    
     static func fetchUser(withUid uid: String, completionHandler: @escaping (User?, Error?) -> Void) {
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+        getCollection(K.Collection.users).document(uid).getDocument { snapshot, error in
             if let error = error {
                 completionHandler(nil, error)
                 return
@@ -50,7 +65,7 @@ struct FirebaseService {
     static func fetchUsers(completionHandler: @escaping ([User]?, Error?) -> Void) {
         var users = [User]()
         
-        Firestore.firestore().collection("users").getDocuments { (snapshot, error) in
+        getCollection(K.Collection.users).getDocuments { (snapshot, error) in
             if let error = error {
                 completionHandler(nil, error)
                 return

@@ -28,6 +28,15 @@ class HomeViewModel: BaseViewModel {
         return cards.asObservable()
     }
     
+    func popCardOnTop() -> CardView? {
+        guard var cardStack = cards.value else { return nil }
+        if cardStack.isEmpty { return nil }
+        
+        let topCard = cardStack.popLast()
+        cards.accept(cardStack)
+        return topCard
+    }
+    
     func logoutUser() {
         logout { [weak self] error in
             if error != nil {

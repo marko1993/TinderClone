@@ -49,4 +49,9 @@ struct K {
         static let ageRange = "Seaking Age Range"
     }
     
+    struct Collection {
+        static let users = "users"
+        static let swipes = "swipes"
+    }
+    
 }

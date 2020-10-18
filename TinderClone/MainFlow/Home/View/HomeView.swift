@@ -7,11 +7,21 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+enum BottomStackButton: Int {
+    case refreshButton = 0
+    case dislikeButton = 1
+    case superLikeButton = 2
+    case likeButton = 3
+    case boostButton = 4
+}
 
 class HomeView: BaseView {
     
     let navigationStackView = HomeNavigationStackView()
-    let bottomStackView = BottomControlsStackView(buttonImages: [#imageLiteral(resourceName: "refresh_circle"), #imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "super_like_circle"), #imageLiteral(resourceName: "like_circle"), #imageLiteral(resourceName: "boost_circle")])
+    private let bottomStackView = BottomControlsStackView(buttonImages: [#imageLiteral(resourceName: "refresh_circle"), #imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "super_like_circle"), #imageLiteral(resourceName: "like_circle"), #imageLiteral(resourceName: "boost_circle")])
     let deckView = UIView()
     let stack = UIStackView()
     
@@ -45,6 +55,20 @@ class HomeView: BaseView {
     override func addConstraints() {
         stack.anchor(top: safeAreaLayoutGuide.topAnchor, left: leftAnchor,
         bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor)
+    }
+    
+    func getBottomStackButton(button: BottomStackButton) -> UIButton {
+        return bottomStackView.buttons[button.rawValue]
+    }
+    
+    func performSwipe(direction: SwipeDirection) {
+        let translation: CGFloat = direction == .right ? 700 : -700
+        let topCard = self.deckView.subviews.last
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+            topCard?.frame = CGRect(x: translation, y: 0, width: topCard!.frame.width, height: topCard!.frame.height)
+        }) { _ in
+            topCard?.removeFromSuperview()
+        }
     }
     
 }
