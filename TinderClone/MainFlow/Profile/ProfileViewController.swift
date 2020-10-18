@@ -14,6 +14,10 @@ class ProfileViewController: BaseViewController {
     
     var viewModel: ProfileViewModel
     let profileView = ProfileView()
+    private let bottomButtonPressed: BehaviorRelay<ProfileStackButton?> = BehaviorRelay(value: nil)
+    var bottomButtonPressedObservable: Observable<ProfileStackButton?> {
+        return bottomButtonPressed.asObservable()
+    }
     
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
@@ -47,6 +51,18 @@ class ProfileViewController: BaseViewController {
     func setupBindings() {
         profileView.dismissButton.onTap(disposeBag: disposeBag) {
             self.dismiss(animated: true, completion: nil)
+        }
+        
+        profileView.getBottomStackButton(button: .dislikeButton).onTap(disposeBag: disposeBag) {
+            self.dismiss(animated: true) {
+                self.bottomButtonPressed.accept(.dislikeButton)
+            }
+        }
+        
+        profileView.getBottomStackButton(button: .likeButton).onTap(disposeBag: disposeBag) {
+            self.dismiss(animated: true) {
+                self.bottomButtonPressed.accept(.likeButton)
+            }
         }
         
         profileView.imagesCollectionView.rx.willDisplayCell.subscribe(onNext: { cell, indexPath in

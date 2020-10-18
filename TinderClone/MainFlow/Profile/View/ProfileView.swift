@@ -10,6 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum ProfileStackButton: Int {
+    case dislikeButton = 0
+    case superLikeButton = 1
+    case likeButton = 2
+}
+
 class ProfileView: BaseView {
     
     lazy var imagesCollectionView: UICollectionView = {
@@ -92,6 +98,10 @@ class ProfileView: BaseView {
     
     func updateImageStackBar(index: Int) {
         barStack?.adjustBarStackViews(position: index)
+    }
+    
+    func getBottomStackButton(button: ProfileStackButton) -> UIButton {
+        return bottomStackView.buttons[button.rawValue]
     }
     
 }
