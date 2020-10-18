@@ -52,7 +52,7 @@ class BaseViewModel {
     }
     
     func saveUser(user: User, completionHandler: @escaping (Error?) -> Void) {
-        FirebaseService.saveUserData(user: user, completionHandler: completionHandler)
+        Repository.shared().saveUserData(user: user, completionHandler: completionHandler)
     }
     
     func getUserInfoTextAttributedString(user: User, textSize: CGFloat, attributedTextSize: CGFloat, textColor: UIColor) -> NSAttributedString {

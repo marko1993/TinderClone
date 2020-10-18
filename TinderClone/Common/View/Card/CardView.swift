@@ -24,6 +24,10 @@ class CardView: BaseView {
     private let infoLabel = UILabel()
     lazy var infoButton = UIButton()
     private lazy var barStack = SegmentedBarView(numberOfSegments: viewModel.imageURLs?.count ?? 0)
+    private let swipeCard: BehaviorRelay<SwipeDirection?> = BehaviorRelay(value: nil)
+    var swipeCardObservable: Observable<SwipeDirection?> {
+        return swipeCard.asObservable()
+    }
     
     init(viewModel: CardViewModel) {
         self.viewModel = viewModel
@@ -98,7 +102,9 @@ class CardView: BaseView {
         case .changed:
             panCard(sender: sender)
         case .ended:
-            resetCardPosition(sender: sender)
+            resetCardPosition(sender: sender) { direction in
+                self.swipeCard.accept(direction)
+            }
         default:
             break
         }

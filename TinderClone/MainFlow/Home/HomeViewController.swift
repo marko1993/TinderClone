@@ -73,11 +73,11 @@ class HomeViewController: BaseViewController {
         }
         
         homeView.getBottomStackButton(button: .dislikeButton).onTap(disposeBag: disposeBag) {
-            self.saveSwipe(direction: .left)
+            self.saveSwipe(direction: .left, performeSwipeAnimation: true)
         }
         
         homeView.getBottomStackButton(button: .likeButton).onTap(disposeBag: disposeBag) {
-            self.saveSwipe(direction: .right)
+            self.saveSwipe(direction: .right, performeSwipeAnimation: true)
         }
         
     }
@@ -88,10 +88,18 @@ class HomeViewController: BaseViewController {
             controller.modalPresentationStyle = .fullScreen
             self.present(controller, animated: true, completion: nil)
         }
+        
+        cardView.swipeCardObservable.subscribe(onNext: { direction in
+            if let direction = direction {
+                self.saveSwipe(direction: direction, performeSwipeAnimation: false)
+            }
+        }).disposed(by: disposeBag)
     }
     
-    private func saveSwipe(direction: SwipeDirection) {
-        self.homeView.performSwipe(direction: direction)
+    private func saveSwipe(direction: SwipeDirection, performeSwipeAnimation: Bool) {
+        if performeSwipeAnimation {
+            self.homeView.performSwipe(direction: direction)
+        }
         let topCard = self.viewModel.popCardOnTop()
         if let topCard = topCard {
             self.viewModel.saveSwipe(for: topCard.viewModel.user, direction: direction)

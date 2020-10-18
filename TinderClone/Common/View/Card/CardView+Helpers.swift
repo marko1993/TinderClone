@@ -17,7 +17,7 @@ extension CardView {
         gradient.locations = [0.5, 1.1]
         layer.addSublayer(gradient)
     }
-    internal func resetCardPosition(sender: UIPanGestureRecognizer) {
+    internal func resetCardPosition(sender: UIPanGestureRecognizer, completionHandler: @escaping (SwipeDirection) -> Void) {
         let direction: SwipeDirection = sender.translation(in: nil).x > 100 ? .right : .left
         let shouldDismissCard = abs(sender.translation(in: nil).x) > 100
         
@@ -33,6 +33,7 @@ extension CardView {
         }) { _ in
             if shouldDismissCard {
                 self.removeFromSuperview()
+                completionHandler(direction)
             }
         }
     }
