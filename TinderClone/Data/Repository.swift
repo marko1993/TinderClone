@@ -54,8 +54,13 @@ class Repository {
         FirebaseService.saveUserData(user: user, completionHandler: completionHandler)
     }
     
-    func saveSwipe(for user: User, direction: SwipeDirection) {
-        FirebaseService.saveSwipe(for: user, direction: direction)
+    func saveSwipeAndCheckForMatch(for user: User, direction: SwipeDirection, completionHandler: @escaping (User) -> Void) {
+        FirebaseService.saveSwipe(for: user, direction: direction) { error in
+            guard direction == .right else { return }
+            FirebaseService.checkIfMatchExists(forUser: user) { didMatch in
+                completionHandler(user)
+            }
+        }
     }
     
 }

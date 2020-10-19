@@ -68,8 +68,8 @@ class BaseViewModel {
         return attributedText
     }
     
-    func saveSwipe(for user: User, direction: SwipeDirection) {
-        Repository.shared().saveSwipe(for: user, direction: direction)
+    func saveSwipeAndCheckForMatch(for user: User, direction: SwipeDirection, completionHandler: @escaping (User) -> Void) {
+        Repository.shared().saveSwipeAndCheckForMatch(for: user, direction: direction, completionHandler: completionHandler)
     }
     
 }

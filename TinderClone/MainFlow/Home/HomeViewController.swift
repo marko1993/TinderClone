@@ -122,7 +122,9 @@ class HomeViewController: BaseViewController {
         }
         let topCard = self.viewModel.popCardOnTop()
         if let topCard = topCard {
-            self.viewModel.saveSwipe(for: topCard.viewModel.user, direction: direction)
+            self.viewModel.saveSwipeAndCheckForMatch(for: topCard.viewModel.user, direction: direction) { userMatched in
+                print("Users mached: \(userMatched.name)")
+            }
         }
     }
     

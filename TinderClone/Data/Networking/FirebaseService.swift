@@ -36,7 +36,7 @@ class FirebaseService: BaseService {
         }
     }
     
-    static func saveSwipe(for user: User, direction: SwipeDirection) {
+    static func saveSwipe(for user: User, direction: SwipeDirection, completionHandler: ((Error?) -> Void)?) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         getCollection(K.Collection.swipes).document(uid).getDocument { snapshot, error in
             if error != nil {
@@ -44,9 +44,9 @@ class FirebaseService: BaseService {
             }
             let data = [user.uid: direction == .right]
             if snapshot?.exists == true {
-                getCollection(K.Collection.swipes).document(uid).updateData(data)
+                getCollection(K.Collection.swipes).document(uid).updateData(data, completion: completionHandler)
             } else {
-                getCollection(K.Collection.swipes).document(uid).setData(data)
+                getCollection(K.Collection.swipes).document(uid).setData(data, completion: completionHandler)
             }
         }
     }
@@ -80,6 +80,15 @@ class FirebaseService: BaseService {
                 .forEach({ users.append($0)} )
             
             completionHandler(users, nil)
+        }
+    }
+    
+    static func checkIfMatchExists(forUser user: User, completionHandler: @escaping (Bool) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        getCollection(K.Collection.swipes).document(user.uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data() else { return }
+            guard let didMatch = data[currentUid] as? Bool else { return }
+            completionHandler(didMatch)
         }
     }
     
