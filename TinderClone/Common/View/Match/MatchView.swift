@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 enum MatchViewButton {
     case sendMessage, keepSwiping
@@ -27,6 +28,10 @@ class MatchView: BaseView {
     private lazy var views = [matchImage, descriptionLabel,
                               currentUserImage, matchedUserImage,
                               sendMessageButton, keepSwipingButton]
+    private let sendMessageToUser: BehaviorRelay<User?> = BehaviorRelay(value: nil)
+    var sendMessageToUserObservable: Observable<User?> {
+        return sendMessageToUser.asObservable()
+    }
     
     init(viewModel: MatchViewModel) {
         self.viewModel = viewModel
@@ -54,10 +59,10 @@ class MatchView: BaseView {
         descriptionLabel.textColor = .white
         descriptionLabel.font = UIFont.systemFont(ofSize: 20)
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.text = String(format: K.Strings.matchDescriptionLabel, viewModel.getMachedUser().name)
+        descriptionLabel.text = viewModel.matchLabeltext
         
-        currentUserImage.image = #imageLiteral(resourceName: "lady4c")
-        matchedUserImage.image = #imageLiteral(resourceName: "kelly1")
+        currentUserImage.sd_setImage(with: viewModel.currentUserImageUrl)
+        matchedUserImage.sd_setImage(with: viewModel.matchedUserImageUrl)
         
     }
     
@@ -77,13 +82,19 @@ class MatchView: BaseView {
         matchImage.setDimensions(height: 80, width: 300)
         matchImage.centerX(inView: self)
         
-        sendMessageButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        keepSwipingButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        sendMessageButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        keepSwipingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
     
     override func setupBinding() {
+        keepSwipingButton.onTap(disposeBag: disposeBag) {
+            self.dismissView()
+        }
         
+        sendMessageButton.onTap(disposeBag: disposeBag) {
+            self.sendMessageToUser.accept(self.viewModel.getMatchedUser())
+        }
     }
     
     private func getUserImage() -> UIImageView {
@@ -116,13 +127,17 @@ class MatchView: BaseView {
             .rx
             .event
             .subscribe(onNext: { _ in
-                self.setAnimation(animation: {
-                    self.alpha = 0
-                }) {
-                    self.removeFromSuperview()
-                }
+                self.dismissView()
             }).disposed(by: disposeBag)
         visualEffectView.addGestureRecognizer(tap)
+    }
+    
+    private func dismissView() {
+        setAnimation(animation: {
+            self.alpha = 0
+        }) {
+            self.removeFromSuperview()
+        }
     }
     
     private func configureImage(_ image: UIImageView) {

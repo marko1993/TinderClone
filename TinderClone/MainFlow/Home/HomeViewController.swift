@@ -131,6 +131,11 @@ class HomeViewController: BaseViewController {
     private func presentMatchView(forUser user: User) {
         guard let currentUser = viewModel.getUser() else { return }
         let matchView = MatchView(viewModel: MatchViewModel(currentUser: currentUser, matchedUser: user))
+        
+        matchView.sendMessageToUserObservable.subscribe(onNext: { user in
+            
+        }).disposed(by: disposeBag)
+        
         homeView.presentMatchView(view: matchView)
     }
     

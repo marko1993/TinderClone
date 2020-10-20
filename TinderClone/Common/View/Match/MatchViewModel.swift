@@ -12,18 +12,23 @@ class MatchViewModel: BaseViewModel {
     
     private let currentUser: User
     private let matchedUser: User
+    let matchLabeltext: String
+    
+    var currentUserImageUrl: URL?
+    var matchedUserImageUrl: URL?
     
     init(currentUser: User, matchedUser: User) {
         self.currentUser = currentUser
         self.matchedUser = matchedUser
+        self.matchLabeltext = String(format: K.Strings.matchDescriptionLabel, matchedUser.name)
+        
+        currentUserImageUrl = currentUser.imageURLs.first
+        matchedUserImageUrl = matchedUser.imageURLs.first
+        
         super.init()
     }
     
-    func getCurrentUser() -> User {
-        return currentUser
-    }
-    
-    func getMachedUser() -> User {
+    func getMatchedUser() -> User {
         return matchedUser
     }
     
