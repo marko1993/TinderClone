@@ -31,6 +31,7 @@ class MatchView: BaseView {
     init(viewModel: MatchViewModel) {
         self.viewModel = viewModel
         super.init(frame: .zero)
+        configureAnimations()
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +42,7 @@ class MatchView: BaseView {
         configureBlurView()
         views.forEach { view in
             addSubview(view)
-            view.alpha = 1
+            view.alpha = 0
         }
     }
     
@@ -61,10 +62,10 @@ class MatchView: BaseView {
     }
     
     override func addConstraints() {
-        currentUserImage.anchor(left: centerXAnchor, paddingLeft: 16)
+        currentUserImage.anchor(right: centerXAnchor, paddingRight: 16)
         configureImage(currentUserImage)
         
-        matchedUserImage.anchor(right: centerXAnchor, paddingLeft: 16)
+        matchedUserImage.anchor(left: centerXAnchor, paddingLeft: 16)
         configureImage(matchedUserImage)
         
         sendMessageButton.anchor(top: currentUserImage.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 32, paddingLeft: 48, paddingRight: 48)
@@ -128,6 +129,27 @@ class MatchView: BaseView {
         image.setDimensions(height: 140, width: 140)
         image.layer.cornerRadius = 140 / 2
         image.centerY(inView: self)
+    }
+    
+    private func configureAnimations() {
+        views.forEach({ $0.alpha = 1 })
+        let angle = 30 * CGFloat.pi / 360
+        
+        currentUserImage.transform = CGAffineTransform(rotationAngle: -angle).concatenating(CGAffineTransform(translationX: 200, y: 0))
+        matchedUserImage.transform = CGAffineTransform(rotationAngle: angle).concatenating(CGAffineTransform(translationX: -200, y: 0))
+        
+        UIView.animateKeyframes(withDuration: 1.3, delay: 0, options: .calculationModeCubic, animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.45) {
+                self.currentUserImage.transform = CGAffineTransform(rotationAngle: -angle)
+                self.matchedUserImage.transform = CGAffineTransform(rotationAngle: angle)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.4) {
+                self.currentUserImage.transform = .identity
+                self.matchedUserImage.transform = .identity
+            }
+        }, completion: nil)
     }
     
     private func setAnimation(animation: @escaping () -> Void, completion: (() -> Void)?) {
