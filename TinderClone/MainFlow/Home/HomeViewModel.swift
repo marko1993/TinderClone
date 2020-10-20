@@ -71,4 +71,8 @@ class HomeViewModel: BaseViewModel {
         }
     }
     
+    func getUser() -> User? {
+        return user.value
+    }
+    
 }

@@ -27,6 +27,9 @@ struct K {
         static let fetchingData = "Fetching data..."
         static let min = "Min"
         static let max = "Max"
+        static let sendMessage = "Send Message"
+        static let keepSwiping = "Keep Swiping"
+        static let matchDescriptionLabel = "You and %@ have liked each other"
     }
     struct UserDataParams {
         static let email = "email"

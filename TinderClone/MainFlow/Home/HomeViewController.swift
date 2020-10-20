@@ -122,10 +122,16 @@ class HomeViewController: BaseViewController {
         }
         let topCard = self.viewModel.popCardOnTop()
         if let topCard = topCard {
-            self.viewModel.saveSwipeAndCheckForMatch(for: topCard.viewModel.user, direction: direction) { userMatched in
-                print("Users mached: \(userMatched.name)")
+            self.viewModel.saveSwipeAndCheckForMatch(for: topCard.viewModel.user, direction: direction) { [weak self] userMatched in
+                self?.presentMatchView(forUser: userMatched)
             }
         }
+    }
+    
+    private func presentMatchView(forUser user: User) {
+        guard let currentUser = viewModel.getUser() else { return }
+        let matchView = MatchView(viewModel: MatchViewModel(currentUser: currentUser, matchedUser: user))
+        homeView.presentMatchView(view: matchView)
     }
     
 }

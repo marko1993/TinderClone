@@ -17,6 +17,8 @@
 		AD0F3F102532114300B441C5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0F2532114300B441C5 /* AuthService.swift */; };
 		AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F11253211B300B441C5 /* FirebaseService.swift */; };
 		AD28FF93253C93D800F6140D /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28FF92253C93D800F6140D /* BaseService.swift */; };
+		AD32E3ED253E2A0E002A1084 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32E3EC253E2A0E002A1084 /* MatchView.swift */; };
+		AD32E3EF253E2A63002A1084 /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32E3EE253E2A63002A1084 /* MatchViewModel.swift */; };
 		AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37DDF925379AFF00A7303C /* SliderView.swift */; };
 		AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */; };
 		AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */; };
@@ -61,6 +63,8 @@
 		ADD3910F253B600300DCF3B3 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD3910E253B600300DCF3B3 /* ProfileCollectionViewCell.swift */; };
 		ADD39111253B604800DCF3B3 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD39110253B604800DCF3B3 /* BaseCollectionViewCell.swift */; };
 		ADD39113253B99EB00DCF3B3 /* SegmentedBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD39112253B99EB00DCF3B3 /* SegmentedBarView.swift */; };
+		ADE2374A253F7B2000271399 /* ButtonGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE23749253F7B2000271399 /* ButtonGradientBackground.swift */; };
+		ADE2374C253F7DDC00271399 /* ButtonGradientBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE2374B253F7DDC00271399 /* ButtonGradientBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +79,8 @@
 		AD0F3F0F2532114300B441C5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AD0F3F11253211B300B441C5 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		AD28FF92253C93D800F6140D /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		AD32E3EC253E2A0E002A1084 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		AD32E3EE253E2A63002A1084 /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
 		AD37DDF925379AFF00A7303C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AD4A31CA2528E3FD0050E9CA /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +127,8 @@
 		ADD3910E253B600300DCF3B3 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADD39110253B604800DCF3B3 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		ADD39112253B99EB00DCF3B3 /* SegmentedBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedBarView.swift; sourceTree = "<group>"; };
+		ADE23749253F7B2000271399 /* ButtonGradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGradientBackground.swift; sourceTree = "<group>"; };
+		ADE2374B253F7DDC00271399 /* ButtonGradientBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonGradientBorder.swift; sourceTree = "<group>"; };
 		DCFE9B53935F10A81F27F789 /* Pods-TinderClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderClone.debug.xcconfig"; path = "Target Support Files/Pods-TinderClone/Pods-TinderClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +176,15 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		AD32E3EB253E29F5002A1084 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				AD32E3EC253E2A0E002A1084 /* MatchView.swift */,
+				AD32E3EE253E2A63002A1084 /* MatchViewModel.swift */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
 		AD4A31C12528E3FD0050E9CA = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +230,7 @@
 		AD4A31E22528E4220050E9CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD32E3EB253E29F5002A1084 /* Match */,
 				ADB820DD2529E4D000EC2E58 /* Card */,
 				AD4A31EE2528E7300050E9CA /* HomeNavigationStackView.swift */,
 				AD4A31F32528ED8A0050E9CA /* BottomControlsStackView.swift */,
@@ -222,6 +240,8 @@
 				AD37DDF925379AFF00A7303C /* SliderView.swift */,
 				AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */,
 				ADD39112253B99EB00DCF3B3 /* SegmentedBarView.swift */,
+				ADE23749253F7B2000271399 /* ButtonGradientBackground.swift */,
+				ADE2374B253F7DDC00271399 /* ButtonGradientBorder.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,6 +529,7 @@
 				ADD39109253B45DF00DCF3B3 /* ProfileViewController.swift in Sources */,
 				AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */,
 				AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */,
+				AD32E3ED253E2A0E002A1084 /* MatchView.swift in Sources */,
 				AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */,
 				ADB820DC2529E3F000EC2E58 /* User.swift in Sources */,
 				AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */,
@@ -525,11 +546,14 @@
 				AD8374672530E0DC004C79EA /* CustomTextField.swift in Sources */,
 				AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */,
 				AD0F3F052531E4CD00B441C5 /* ButtonWithAttributedString.swift in Sources */,
+				ADE2374A253F7B2000271399 /* ButtonGradientBackground.swift in Sources */,
 				ADB820DA2529DF1A00EC2E58 /* CardView+Helpers.swift in Sources */,
 				ADB820DF2529E4F000EC2E58 /* CardViewModel.swift in Sources */,
 				AD0F3F092531EFDD00B441C5 /* UITextField+Extensions.swift in Sources */,
+				ADE2374C253F7DDC00271399 /* ButtonGradientBorder.swift in Sources */,
 				AD4A31F42528ED8A0050E9CA /* BottomControlsStackView.swift in Sources */,
 				AD4A31EB2528E5DC0050E9CA /* BaseViewController.swift in Sources */,
+				AD32E3EF253E2A63002A1084 /* MatchViewModel.swift in Sources */,
 				AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */,
 				AD4A31EF2528E7300050E9CA /* HomeNavigationStackView.swift in Sources */,
 				AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */,

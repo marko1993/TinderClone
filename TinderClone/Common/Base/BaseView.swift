@@ -58,4 +58,9 @@ class BaseView: UIView {
         }
     }
     
+    func presentMatchView(view: MatchView) {
+        addSubview(view)
+        view.fillSuperview()
+    }
+    
 }
