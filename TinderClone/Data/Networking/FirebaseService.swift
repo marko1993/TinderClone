@@ -69,17 +69,30 @@ class FirebaseService: BaseService {
             .whereField(K.UserDataParams.age, isGreaterThanOrEqualTo: user.minSeekingAge)
             .whereField(K.UserDataParams.age, isLessThanOrEqualTo: user.maxSeekingAge)
         
-        query.getDocuments { (snapshot, error) in
-            if let error = error {
-                completionHandler(nil, error)
+        fetchSwipes { swipedUsers in
+            query.getDocuments { (snapshot, error) in
+                if let error = error {
+                    completionHandler(nil, error)
+                    return
+                }
+                snapshot?.documents
+                    .map({ User(data: $0.data()) })
+                    .filter({ $0.uid != user.uid && swipedUsers[$0.uid] == nil })
+                    .forEach({ users.append($0) })
+                
+                completionHandler(users, nil)
+            }
+        }
+    }
+    
+    private static func fetchSwipes(completionHandler: @escaping ([String: Bool]) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        getCollection(K.Collection.swipes).document(uid).getDocument { snapshot, error in
+            guard let data = snapshot?.data() as? [String: Bool]  else {
+                completionHandler([String: Bool]())
                 return
             }
-            snapshot?.documents
-                .map({ User(data: $0.data()) })
-                .filter({ $0.uid != user.uid })
-                .forEach({ users.append($0)} )
-            
-            completionHandler(users, nil)
+            completionHandler(data)
         }
     }
     
