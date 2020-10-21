@@ -30,6 +30,8 @@ struct K {
         static let sendMessage = "Send Message"
         static let keepSwiping = "Keep Swiping"
         static let matchDescriptionLabel = "You and %@ have liked each other"
+        static let newMatches = "New Matches"
+        static let matches = "Matches"
     }
     struct UserDataParams {
         static let email = "email"

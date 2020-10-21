@@ -39,7 +39,11 @@ class HomeViewController: BaseViewController {
     
     private func setupBinding() {
         homeView.navigationStackView.messageButton.onTap(disposeBag: disposeBag) {
-            
+            guard let user = self.viewModel.getUser() else { return }
+            let controller = MatchedUsersViewController(viewModel: MatchedUsersViewModel(user: user))
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
         }
         
         homeView.navigationStackView.settingsButton.onTap(disposeBag: disposeBag) {

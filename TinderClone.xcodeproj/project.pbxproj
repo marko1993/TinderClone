@@ -42,6 +42,14 @@
 		AD56B0DF25363837000D1AD4 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0DE25363837000D1AD4 /* SettingsSection.swift */; };
 		AD56B0E125363EE0000D1AD4 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */; };
 		AD56B0E32536413D000D1AD4 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0E22536413D000D1AD4 /* SettingsData.swift */; };
+		AD739F6325407CB50015589A /* MatchedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F6225407CB50015589A /* MatchedUsersViewController.swift */; };
+		AD739F6525407CED0015589A /* MatchedUsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F6425407CED0015589A /* MatchedUsersViewModel.swift */; };
+		AD739F6725407D200015589A /* MatchedUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F6625407D200015589A /* MatchedUsersView.swift */; };
+		AD739F692540852B0015589A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F682540852B0015589A /* UIImageView+Extension.swift */; };
+		AD739F6B254085D40015589A /* MatchedUsersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F6A254085D40015589A /* MatchedUsersHeader.swift */; };
+		AD739F6D25408ABE0015589A /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F6C25408ABE0015589A /* BaseCollectionReusableView.swift */; };
+		AD739F6F25408CBA0015589A /* MatchedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F6E25408CBA0015589A /* MatchedUserTableViewCell.swift */; };
+		AD739F712540925F0015589A /* MatchedUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD739F702540925F0015589A /* MatchedUserCollectionViewCell.swift */; };
 		AD8374532530D02C004C79EA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374522530D02C004C79EA /* HomeViewModel.swift */; };
 		AD8374552530D1D4004C79EA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374542530D1D4004C79EA /* Repository.swift */; };
 		AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374582530D61A004C79EA /* RegistrationViewController.swift */; };
@@ -106,6 +114,14 @@
 		AD56B0DE25363837000D1AD4 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
 		AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		AD56B0E22536413D000D1AD4 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		AD739F6225407CB50015589A /* MatchedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsersViewController.swift; sourceTree = "<group>"; };
+		AD739F6425407CED0015589A /* MatchedUsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsersViewModel.swift; sourceTree = "<group>"; };
+		AD739F6625407D200015589A /* MatchedUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsersView.swift; sourceTree = "<group>"; };
+		AD739F682540852B0015589A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		AD739F6A254085D40015589A /* MatchedUsersHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUsersHeader.swift; sourceTree = "<group>"; };
+		AD739F6C25408ABE0015589A /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		AD739F6E25408CBA0015589A /* MatchedUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUserTableViewCell.swift; sourceTree = "<group>"; };
+		AD739F702540925F0015589A /* MatchedUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUserCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD8374522530D02C004C79EA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AD8374542530D1D4004C79EA /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		AD8374582530D61A004C79EA /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +179,7 @@
 				AD56B0E025363EE0000D1AD4 /* BaseTableViewCell.swift */,
 				ADD39110253B604800DCF3B3 /* BaseCollectionViewCell.swift */,
 				AD28FF92253C93D800F6140D /* BaseService.swift */,
+				AD739F6C25408ABE0015589A /* BaseCollectionReusableView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -254,6 +271,7 @@
 				AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */,
 				AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */,
 				ADD39104253B443C00DCF3B3 /* UILabel+Extensions.swift */,
+				AD739F682540852B0015589A /* UIImageView+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -286,6 +304,7 @@
 				AD8374572530D5FB004C79EA /* Registration */,
 				AD8374562530D5F3004C79EA /* Login */,
 				AD4A31E72528E4EE0050E9CA /* Home */,
+				AD739F6025407C7E0015589A /* MatchedUsers */,
 				AD56B0CC25331BE5000D1AD4 /* Settings */,
 			);
 			path = MainFlow;
@@ -327,6 +346,27 @@
 				AD56B0D425332A42000D1AD4 /* SettingsHeaderView.swift */,
 				AD56B0DC253631AB000D1AD4 /* SettingsTableViewCell.swift */,
 				AD56B0DE25363837000D1AD4 /* SettingsSection.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD739F6025407C7E0015589A /* MatchedUsers */ = {
+			isa = PBXGroup;
+			children = (
+				AD739F6225407CB50015589A /* MatchedUsersViewController.swift */,
+				AD739F6425407CED0015589A /* MatchedUsersViewModel.swift */,
+				AD739F6125407C9B0015589A /* View */,
+			);
+			path = MatchedUsers;
+			sourceTree = "<group>";
+		};
+		AD739F6125407C9B0015589A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD739F6625407D200015589A /* MatchedUsersView.swift */,
+				AD739F6A254085D40015589A /* MatchedUsersHeader.swift */,
+				AD739F6E25408CBA0015589A /* MatchedUserTableViewCell.swift */,
+				AD739F702540925F0015589A /* MatchedUserCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -521,16 +561,20 @@
 			files = (
 				AD56B0D525332A42000D1AD4 /* SettingsHeaderView.swift in Sources */,
 				AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */,
+				AD739F6525407CED0015589A /* MatchedUsersViewModel.swift in Sources */,
 				AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */,
 				AD8374602530D6F1004C79EA /* LoginViewController.swift in Sources */,
 				ADD3910F253B600300DCF3B3 /* ProfileCollectionViewCell.swift in Sources */,
 				AD0F3F102532114300B441C5 /* AuthService.swift in Sources */,
+				AD739F6F25408CBA0015589A /* MatchedUserTableViewCell.swift in Sources */,
 				AD56B0DF25363837000D1AD4 /* SettingsSection.swift in Sources */,
 				ADD39109253B45DF00DCF3B3 /* ProfileViewController.swift in Sources */,
 				AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */,
 				AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */,
 				AD32E3ED253E2A0E002A1084 /* MatchView.swift in Sources */,
 				AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */,
+				AD739F6725407D200015589A /* MatchedUsersView.swift in Sources */,
+				AD739F692540852B0015589A /* UIImageView+Extension.swift in Sources */,
 				ADB820DC2529E3F000EC2E58 /* User.swift in Sources */,
 				AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */,
 				AD8374622530D728004C79EA /* LoginViewModel.swift in Sources */,
@@ -547,7 +591,9 @@
 				AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */,
 				AD0F3F052531E4CD00B441C5 /* ButtonWithAttributedString.swift in Sources */,
 				ADE2374A253F7B2000271399 /* ButtonGradientBackground.swift in Sources */,
+				AD739F6B254085D40015589A /* MatchedUsersHeader.swift in Sources */,
 				ADB820DA2529DF1A00EC2E58 /* CardView+Helpers.swift in Sources */,
+				AD739F6325407CB50015589A /* MatchedUsersViewController.swift in Sources */,
 				ADB820DF2529E4F000EC2E58 /* CardViewModel.swift in Sources */,
 				AD0F3F092531EFDD00B441C5 /* UITextField+Extensions.swift in Sources */,
 				ADE2374C253F7DDC00271399 /* ButtonGradientBorder.swift in Sources */,
@@ -555,6 +601,7 @@
 				AD4A31EB2528E5DC0050E9CA /* BaseViewController.swift in Sources */,
 				AD32E3EF253E2A63002A1084 /* MatchViewModel.swift in Sources */,
 				AD4A31D02528E3FD0050E9CA /* SceneDelegate.swift in Sources */,
+				AD739F712540925F0015589A /* MatchedUserCollectionViewCell.swift in Sources */,
 				AD4A31EF2528E7300050E9CA /* HomeNavigationStackView.swift in Sources */,
 				AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */,
 				AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */,
@@ -570,6 +617,7 @@
 				AD4A31FA252903ED0050E9CA /* BaseView.swift in Sources */,
 				AD4A31E92528E5070050E9CA /* HomeViewController.swift in Sources */,
 				AD56B0E125363EE0000D1AD4 /* BaseTableViewCell.swift in Sources */,
+				AD739F6D25408ABE0015589A /* BaseCollectionReusableView.swift in Sources */,
 				AD83745E2530D681004C79EA /* RegistrationView.swift in Sources */,
 				AD28FF93253C93D800F6140D /* BaseService.swift in Sources */,
 				ADD39105253B443C00DCF3B3 /* UILabel+Extensions.swift in Sources */,
