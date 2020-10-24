@@ -38,12 +38,8 @@ class HomeViewController: BaseViewController {
     }
     
     private func setupBinding() {
-        homeView.navigationStackView.messageButton.onTap(disposeBag: disposeBag) {
-            guard let user = self.viewModel.getUser() else { return }
-            let controller = MatchedUsersViewController(viewModel: MatchedUsersViewModel(user: user))
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true, completion: nil)
+        homeView.navigationStackView.matchesButton.onTap(disposeBag: disposeBag) {
+            self.presentMatchesViewController()
         }
         
         homeView.navigationStackView.settingsButton.onTap(disposeBag: disposeBag) {
@@ -137,11 +133,21 @@ class HomeViewController: BaseViewController {
         guard let currentUser = viewModel.getUser() else { return }
         let matchView = MatchView(viewModel: MatchViewModel(currentUser: currentUser, matchedUser: user))
         
-        matchView.sendMessageToUserObservable.subscribe(onNext: { user in
-            
+        matchView.goToMatchesObservable.subscribe(onNext: { goToMatches in
+            if goToMatches == true {
+                self.presentMatchesViewController()
+            }
         }).disposed(by: disposeBag)
         
         homeView.presentMatchView(view: matchView)
+    }
+    
+    private func presentMatchesViewController() {
+        guard let user = self.viewModel.getUser() else { return }
+        let controller = MatchedUsersViewController(viewModel: MatchedUsersViewModel(user: user))
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
 }

@@ -12,7 +12,7 @@ import UIKit
 class HomeNavigationStackView: BaseStackView {
     
     let settingsButton = UIButton(type: .system)
-    let messageButton = UIButton(type: .system)
+    let matchesButton = UIButton(type: .system)
     let tinderIcon = UIImageView(image: #imageLiteral(resourceName: "app_icon"))
 
     override init(frame: CGRect) {
@@ -25,7 +25,7 @@ class HomeNavigationStackView: BaseStackView {
 
     override func addSubviews() {
         [settingsButton, UIView(), tinderIcon,
-         UIView(), messageButton].forEach { view in
+         UIView(), matchesButton].forEach { view in
             addArrangedSubview(view)
         }
     }
@@ -33,7 +33,7 @@ class HomeNavigationStackView: BaseStackView {
     override func styleViews() {
         tinderIcon.contentMode = .scaleAspectFit
         settingsButton.setImage(#imageLiteral(resourceName: "top_left_profile").withRenderingMode(.alwaysOriginal), for: .normal)
-        messageButton.setImage(#imageLiteral(resourceName: "top_right_messages").withRenderingMode(.alwaysOriginal), for: .normal)
+        matchesButton.setImage(#imageLiteral(resourceName: "top_right_messages").withRenderingMode(.alwaysOriginal), for: .normal)
         distribution = .equalCentering
     }
     

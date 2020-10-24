@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 enum MatchViewButton {
-    case sendMessage, keepSwiping
+    case goToMatches, keepSwiping
 }
 
 class MatchView: BaseView {
@@ -21,16 +21,16 @@ class MatchView: BaseView {
     private let descriptionLabel = UILabel()
     private lazy var currentUserImage = getUserImage()
     private lazy var matchedUserImage = getUserImage()
-    private lazy var sendMessageButton = getButton(title: K.Strings.sendMessage, button: .sendMessage)
+    private lazy var goToMatchesButton = getButton(title: K.Strings.matches, button: .goToMatches)
     private lazy var keepSwipingButton = getButton(title: K.Strings.keepSwiping, button: .keepSwiping)
     private let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     private lazy var views = [matchImage, descriptionLabel,
                               currentUserImage, matchedUserImage,
-                              sendMessageButton, keepSwipingButton]
-    private let sendMessageToUser: BehaviorRelay<User?> = BehaviorRelay(value: nil)
-    var sendMessageToUserObservable: Observable<User?> {
-        return sendMessageToUser.asObservable()
+                              goToMatchesButton, keepSwipingButton]
+    private let goToMatches: BehaviorRelay<Bool?> = BehaviorRelay(value: nil)
+    var goToMatchesObservable: Observable<Bool?> {
+        return goToMatches.asObservable()
     }
     
     init(viewModel: MatchViewModel) {
@@ -73,8 +73,8 @@ class MatchView: BaseView {
         matchedUserImage.anchor(left: centerXAnchor, paddingLeft: 16)
         configureImage(matchedUserImage)
         
-        sendMessageButton.anchor(top: currentUserImage.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 32, paddingLeft: 48, paddingRight: 48)
-        keepSwipingButton.anchor(top: sendMessageButton.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 48, paddingRight: 48)
+        goToMatchesButton.anchor(top: currentUserImage.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 32, paddingLeft: 48, paddingRight: 48)
+        keepSwipingButton.anchor(top: goToMatchesButton.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 48, paddingRight: 48)
         
         descriptionLabel.anchor(left: leftAnchor, bottom: currentUserImage.topAnchor, right: rightAnchor, paddingBottom: 32)
         
@@ -82,7 +82,7 @@ class MatchView: BaseView {
         matchImage.setDimensions(height: 80, width: 300)
         matchImage.centerX(inView: self)
         
-        sendMessageButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        goToMatchesButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         keepSwipingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
@@ -92,8 +92,8 @@ class MatchView: BaseView {
             self.dismissView()
         }
         
-        sendMessageButton.onTap(disposeBag: disposeBag) {
-            self.sendMessageToUser.accept(self.viewModel.getMatchedUser())
+        goToMatchesButton.onTap(disposeBag: disposeBag) {
+            self.goToMatches.accept(true)
         }
     }
     
@@ -107,7 +107,7 @@ class MatchView: BaseView {
     }
     
     private func getButton(title: String, button: MatchViewButton) -> UIButton {
-        let btn = button == .sendMessage ? ButtonGradientBackground(type: .system) : ButtonGradientBorder(type: .system)
+        let btn = button == .goToMatches ? ButtonGradientBackground(type: .system) : ButtonGradientBorder(type: .system)
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(.white, for: .normal)
         return btn
