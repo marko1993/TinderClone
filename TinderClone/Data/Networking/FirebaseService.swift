@@ -105,6 +105,23 @@ class FirebaseService: BaseService {
         }
     }
     
+    static func uploadMatch(currentUser: User, matchedUser: User) {
+        guard let matchedProfileImageUrl = matchedUser.images.first else { return }
+        guard let currentProfileImageUrl = currentUser.images.first else { return }
+        
+        let matchedUserData = [K.UserDataParams.uid: matchedUser.uid,
+                               K.UserDataParams.fullName: matchedUser.name,
+                               K.UserDataParams.profileImageUrl: matchedProfileImageUrl]
+        
+        let currentUserData = [K.UserDataParams.uid: currentUser.uid,
+                               K.UserDataParams.fullName: currentUser.name,
+                               K.UserDataParams.profileImageUrl: currentProfileImageUrl]
+        
+        getCollection(K.Collection.matches).document(currentUser.uid).collection(K.Collection.usersMatches).document(matchedUser.uid).setData(matchedUserData)
+        getCollection(K.Collection.matches).document(matchedUser.uid).collection(K.Collection.usersMatches).document(currentUser.uid).setData(currentUserData)
+        
+    }
+    
     private static func getDataFromUser(_ user: User) -> [String: Any] {
         return [K.UserDataParams.email: user.email,
                 K.UserDataParams.fullName: user.name,

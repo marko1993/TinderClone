@@ -43,6 +43,7 @@ struct K {
         static let maxSeekingAge = "maxSeekingAge"
         static let profession = "profession"
         static let bio = "bio"
+        static let profileImageUrl = "profileImageUrl"
     }
     struct Error {
         static let avatarMissing = "Avatar needs to be added"
@@ -59,6 +60,8 @@ struct K {
     struct Collection {
         static let users = "users"
         static let swipes = "swipes"
+        static let matches = "matches"
+        static let usersMatches = "usersMatches"
     }
     
 }

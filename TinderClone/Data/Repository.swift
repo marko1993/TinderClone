@@ -63,4 +63,8 @@ class Repository {
         }
     }
     
+    func uploadMatch(currentUser: User, matchedUser: User) {
+        FirebaseService.uploadMatch(currentUser: currentUser, matchedUser: matchedUser)
+    }
+    
 }
