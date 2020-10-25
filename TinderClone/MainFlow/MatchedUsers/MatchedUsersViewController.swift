@@ -75,7 +75,7 @@ class MatchedUsersViewController: BaseViewController, UIScrollViewDelegate {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension MatchedUsersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 108)
+        return CGSize(width: 80, height: 120)
     }
 }
 

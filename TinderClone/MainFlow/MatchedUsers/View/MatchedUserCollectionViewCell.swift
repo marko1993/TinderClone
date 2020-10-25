@@ -38,7 +38,7 @@ class MatchedUserCollectionViewCell: BaseCollectionViewCell {
         nameLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         nameLabel.textColor = .darkGray
         nameLabel.textAlignment = .center
-        nameLabel.numberOfLines = 2
+        nameLabel.numberOfLines = 0
         
         stack.axis = .vertical
         stack.distribution = .fillProportionally
