@@ -41,11 +41,11 @@ class RegistrationViewController: BaseViewController {
             let credentials = AuthCredentials(email: email, password: password, fullName: fullName, profileImage: profileimage)
             
             self.viewModel.registerUser(with: credentials) { [weak self] error in
+                self?.registrationView.isProgressVisible(false)
                 if let error = error {
                     self?.registrationView.setErrorLabel(text: error.localizedDescription)
                     return
                 }
-                self?.registrationView.isProgressVisible(false)
                 self?.dismiss(animated: true, completion: nil)
             }
         }

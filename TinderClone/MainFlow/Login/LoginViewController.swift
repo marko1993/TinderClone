@@ -31,11 +31,11 @@ class LoginViewController: BaseViewController {
             
             self.loginView.isProgressVisible(true, title: K.Strings.savingData)
             self.viewModel.logUserIn(email: email, password: password) { [weak self] error in
+                self?.loginView.isProgressVisible(false)
                 if let error = error {
                     self?.loginView.setErrorLabel(text: error.localizedDescription)
                     return
                 }
-                self?.loginView.isProgressVisible(false)
                 self?.dismiss(animated: true, completion: nil)
             }
         }
