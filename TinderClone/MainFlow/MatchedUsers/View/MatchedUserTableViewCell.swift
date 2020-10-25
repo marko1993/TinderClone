@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+protocol MatchedUserTableViewCellDelegate: class {
+    func onItemClickPerformed(_ cell: MatchedUserTableViewCell, user: User)
+}
 
 class MatchedUserTableViewCell: BaseTableViewCell {
     
@@ -14,6 +20,8 @@ class MatchedUserTableViewCell: BaseTableViewCell {
     private let nameLabel = UILabel()
     private let profileImage = UIImageView()
     private lazy var stack = UIStackView(arrangedSubviews: [profileImage, nameLabel])
+    weak var delegate: MatchedUserTableViewCellDelegate?
+    private var user: User?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,6 +37,8 @@ class MatchedUserTableViewCell: BaseTableViewCell {
     
     override func styleViews() {
         selectionStyle = .none
+        isUserInteractionEnabled = true
+        
         profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true
         profileImage.layer.borderWidth = 2
@@ -51,9 +61,23 @@ class MatchedUserTableViewCell: BaseTableViewCell {
         stack.fillSuperview(padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16))
     }
     
-    func setupWithUser(_ user: User) {
-        profileImage.sd_setImage(with: user.imageURLs.first)
+    override func setupBinding() {
+        let tap = UITapGestureRecognizer()
+        tap
+            .rx
+            .event
+            .subscribe(onNext: { _ in
+                guard let user = self.user else { return }
+                self.delegate?.onItemClickPerformed(self, user: user)
+            }).disposed(by: disposeBag)
+        self.addGestureRecognizer(tap)
+    }
+    
+    func setup(with user: User) {
+        self.user = user
         nameLabel.text = user.name
+        guard let imageURL = user.imageURLs.first else { return }
+        profileImage.sd_setImage(with: imageURL)
     }
     
 }

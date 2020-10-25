@@ -34,10 +34,12 @@ class ProfileView: BaseView {
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     let bottomStackView = BottomControlsStackView(buttonImages: [ #imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "super_like_circle"), #imageLiteral(resourceName: "like_circle")])
     var barStack: SegmentedBarView?
+    var hideBottomNavigation: Bool
     
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(hideBottomNavigation: Bool = false) {
+        self.hideBottomNavigation = hideBottomNavigation
+        super.init(frame: .zero)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +74,7 @@ class ProfileView: BaseView {
         infoStack.spacing = 4
         
         bottomStackView.spacing = 10
+        bottomStackView.isHidden = hideBottomNavigation
     }
     
     override func addConstraints() {

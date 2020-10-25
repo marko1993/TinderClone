@@ -67,4 +67,8 @@ class Repository {
         FirebaseService.uploadMatch(currentUser: currentUser, matchedUser: matchedUser)
     }
     
+    func getMatches(completionHandler: @escaping ([User], Error?) -> Void) {
+        FirebaseService.fetchMatches(completionHandler: completionHandler)
+    }
+    
 }

@@ -13,9 +13,9 @@ import RxCocoa
 class MatchedUsersViewModel: BaseViewModel {
     
     let user: User
-    let matchedUsers: BehaviorRelay<[User]> = BehaviorRelay(value: [])
-    var matchedUsersObservable: Observable<[User]> {
-        return matchedUsers.asObservable()
+    let matches: BehaviorRelay<[User]> = BehaviorRelay(value: [])
+    var matchesObservable: Observable<[User]> {
+        return matches.asObservable()
     }
     
     init(user: User) {
@@ -23,16 +23,9 @@ class MatchedUsersViewModel: BaseViewModel {
         super.init()
     }
     
-    func getMatchedUsers() {
-        getAllUsers(forCurrent: user) { users, error in
-            var newUsers: [User] = []
-            if let users = users {
-                newUsers.append(contentsOf: users)
-                newUsers.append(contentsOf: users)
-                newUsers.append(contentsOf: users)
-                newUsers.append(contentsOf: users)
-                self.matchedUsers.accept(newUsers)
-            }
+    func getMatches() {
+        Repository.shared().getMatches { [weak self] matches, error in
+            self?.matches.accept(matches)
         }
     }
     

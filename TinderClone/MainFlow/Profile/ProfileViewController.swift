@@ -13,14 +13,15 @@ import RxCocoa
 class ProfileViewController: BaseViewController {
     
     var viewModel: ProfileViewModel
-    let profileView = ProfileView()
+    let profileView: ProfileView
     private let bottomButtonPressed: BehaviorRelay<ProfileStackButton?> = BehaviorRelay(value: nil)
     var bottomButtonPressedObservable: Observable<ProfileStackButton?> {
         return bottomButtonPressed.asObservable()
     }
     
-    init(viewModel: ProfileViewModel) {
+    init(viewModel: ProfileViewModel, hideBottomNavigation: Bool = false) {
         self.viewModel = viewModel
+        self.profileView = ProfileView(hideBottomNavigation: hideBottomNavigation)
         super.init(nibName: nil, bundle: nil)
     }
     

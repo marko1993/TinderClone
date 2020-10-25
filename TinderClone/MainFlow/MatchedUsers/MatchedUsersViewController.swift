@@ -29,7 +29,7 @@ class MatchedUsersViewController: BaseViewController, UIScrollViewDelegate {
         setupView(matchedUsersView)
         configureNavigationController()
         setupBinding()
-        viewModel.getMatchedUsers()
+        viewModel.getMatches()
     }
     
     override func viewDidLayoutSubviews() {
@@ -37,18 +37,19 @@ class MatchedUsersViewController: BaseViewController, UIScrollViewDelegate {
         matchedUsersView.tableView.delegate = nil
         matchedUsersView.tableView.dataSource = nil
         viewModel
-            .matchedUsersObservable
+            .matchesObservable
             .bind(to: matchedUsersView
                 .tableView
                 .rx
                 .items(cellIdentifier: MatchedUserTableViewCell.reuseIdentifier,
                        cellType: MatchedUserTableViewCell.self)) { index, user, cell in
-                        cell.setupWithUser(user)
+                        cell.setup(with: user)
+                        cell.delegate = self
         }.disposed(by: disposeBag)
         
         matchedUsersView.headerView.newMatchesCV.delegate = nil
         matchedUsersView.headerView.newMatchesCV.dataSource = nil
-        viewModel.matchedUsersObservable
+        viewModel.matches
             .bind(to: matchedUsersView.headerView.newMatchesCV.rx
             .items(cellIdentifier: MatchedUserCollectionViewCell.reuseIdentifier,
                        cellType: MatchedUserCollectionViewCell.self)) { row, user, cell in
@@ -71,8 +72,16 @@ class MatchedUsersViewController: BaseViewController, UIScrollViewDelegate {
     
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MatchedUsersViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 108)
+    }
+}
+
+//MARK: - MatchedUserTableViewCellDelegate
+extension MatchedUsersViewController: MatchedUserTableViewCellDelegate {
+    func onItemClickPerformed(_ cell: MatchedUserTableViewCell, user: User) {
+        presentProfileViewController(user: user, hideBottomNavigation: true)
     }
 }

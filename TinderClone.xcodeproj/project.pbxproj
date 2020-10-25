@@ -19,7 +19,6 @@
 		AD28FF93253C93D800F6140D /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28FF92253C93D800F6140D /* BaseService.swift */; };
 		AD32E3ED253E2A0E002A1084 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32E3EC253E2A0E002A1084 /* MatchView.swift */; };
 		AD32E3EF253E2A63002A1084 /* MatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32E3EE253E2A63002A1084 /* MatchViewModel.swift */; };
-		AD3518BA2544CFD400CCE68B /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3518B92544CFD400CCE68B /* Match.swift */; };
 		AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD37DDF925379AFF00A7303C /* SliderView.swift */; };
 		AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */; };
 		AD4A31CE2528E3FD0050E9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */; };
@@ -90,7 +89,6 @@
 		AD28FF92253C93D800F6140D /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		AD32E3EC253E2A0E002A1084 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		AD32E3EE253E2A63002A1084 /* MatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewModel.swift; sourceTree = "<group>"; };
-		AD3518B92544CFD400CCE68B /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		AD37DDF925379AFF00A7303C /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		AD3C6C2F2539FE1600A81205 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		AD4A31CA2528E3FD0050E9CA /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				ADB820DB2529E3F000EC2E58 /* User.swift */,
-				AD3518B92544CFD400CCE68B /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -582,7 +579,6 @@
 				AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */,
 				AD8374622530D728004C79EA /* LoginViewModel.swift in Sources */,
 				AD4A31ED2528E6E40050E9CA /* Extensions.swift in Sources */,
-				AD3518BA2544CFD400CCE68B /* Match.swift in Sources */,
 				AD9EE6892530E73A00E3FDBF /* CustomButton.swift in Sources */,
 				AD8374652530D76E004C79EA /* LoginView.swift in Sources */,
 				AD4A31F62528F0B20050E9CA /* CardView.swift in Sources */,

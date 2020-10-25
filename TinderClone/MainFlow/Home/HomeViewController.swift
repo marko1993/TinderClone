@@ -88,10 +88,7 @@ class HomeViewController: BaseViewController {
     
     private func setupBinding(for cardView: CardView) {
         cardView.infoButton.onTap(disposeBag: disposeBag) {
-            let controller = ProfileViewController(viewModel: ProfileViewModel(user: cardView.viewModel.user))
-            controller.modalPresentationStyle = .fullScreen
-            self.setupBindingForProfileController(controller)
-            self.present(controller, animated: true, completion: nil)
+            self.presentProfileViewController(user: cardView.viewModel.user)
         }
         
         cardView.swipeCardObservable.subscribe(onNext: { direction in
@@ -101,22 +98,7 @@ class HomeViewController: BaseViewController {
         }).disposed(by: disposeBag)
     }
     
-    private func setupBindingForProfileController(_ controller: ProfileViewController) {
-        controller.bottomButtonPressedObservable.subscribe(onNext: { bottomButton in
-            if let bottomButton = bottomButton {
-                switch bottomButton {
-                case .dislikeButton:
-                    self.saveSwipe(direction: .left, performeSwipeAnimation: true)
-                case .superLikeButton:
-                    self.saveSwipe(direction: .right, performeSwipeAnimation: true)
-                case .likeButton:
-                    self.saveSwipe(direction: .right, performeSwipeAnimation: true)
-                }
-            }
-        }).disposed(by: disposeBag)
-    }
-    
-    private func saveSwipe(direction: SwipeDirection, performeSwipeAnimation: Bool) {
+    override func saveSwipe(direction: SwipeDirection, performeSwipeAnimation: Bool) {
         if performeSwipeAnimation {
             self.homeView.performSwipe(direction: direction)
         }

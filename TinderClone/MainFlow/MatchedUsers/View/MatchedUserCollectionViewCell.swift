@@ -51,8 +51,9 @@ class MatchedUserCollectionViewCell: BaseCollectionViewCell {
     }
     
     func setup(with user: User) {
-        profileImage.sd_setImage(with: user.imageURLs.first)
         nameLabel.text = user.name
+        guard let imageURL = user.imageURLs.first else { return }
+        profileImage.sd_setImage(with: imageURL)
     }
     
     
