@@ -12,8 +12,7 @@ import RxCocoa
 
 enum ProfileStackButton: Int {
     case dislikeButton = 0
-    case superLikeButton = 1
-    case likeButton = 2
+    case likeButton = 1
 }
 
 class ProfileView: BaseView {
@@ -32,7 +31,7 @@ class ProfileView: BaseView {
     let bioLabel = UILabel()
     let infoStack = UIStackView()
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
-    let bottomStackView = BottomControlsStackView(buttonImages: [ #imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "super_like_circle"), #imageLiteral(resourceName: "like_circle")])
+    let bottomStackView = BottomControlsStackView(buttonImages: [#imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "like_circle")])
     var barStack: SegmentedBarView?
     var hideBottomNavigation: Bool
     

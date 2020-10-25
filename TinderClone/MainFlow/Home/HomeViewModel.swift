@@ -60,6 +60,7 @@ class HomeViewModel: BaseViewModel {
     
     func getUsers() {
         guard let user = user.value else { return }
+        self.cards.accept([])
         getAllUsers(forCurrent: user) { [weak self] users, error in
             if let error = error {
                 print(error)

@@ -11,17 +11,15 @@ import RxSwift
 import RxCocoa
 
 enum BottomStackButton: Int {
-    case refreshButton = 0
-    case dislikeButton = 1
-    case superLikeButton = 2
-    case likeButton = 3
-    case boostButton = 4
+    case dislikeButton = 0
+    case refreshButton = 1
+    case likeButton = 2
 }
 
 class HomeView: BaseView {
     
     let navigationStackView = HomeNavigationStackView()
-    private let bottomStackView = BottomControlsStackView(buttonImages: [#imageLiteral(resourceName: "refresh_circle"), #imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "super_like_circle"), #imageLiteral(resourceName: "like_circle"), #imageLiteral(resourceName: "boost_circle")])
+    private let bottomStackView = BottomControlsStackView(buttonImages: [#imageLiteral(resourceName: "dismiss_circle"), #imageLiteral(resourceName: "refresh_circle"), #imageLiteral(resourceName: "like_circle")])
     let deckView = UIView()
     let stack = UIStackView()
     

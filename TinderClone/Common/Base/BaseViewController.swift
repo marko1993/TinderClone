@@ -45,8 +45,6 @@ class BaseViewController: UIViewController {
                 switch bottomButton {
                 case .dislikeButton:
                     self.saveSwipe(direction: .left, performeSwipeAnimation: true)
-                case .superLikeButton:
-                    self.saveSwipe(direction: .right, performeSwipeAnimation: true)
                 case .likeButton:
                     self.saveSwipe(direction: .right, performeSwipeAnimation: true)
                 }

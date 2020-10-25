@@ -73,7 +73,11 @@ class HomeViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
         homeView.getBottomStackButton(button: .refreshButton).onTap(disposeBag: disposeBag) {
-            print("refresh")
+            self.homeView.isProgressVisible(true)
+            self.homeView.deckView.subviews.forEach { view in
+                view.removeFromSuperview()
+            }
+            self.viewModel.getUsers()
         }
         
         homeView.getBottomStackButton(button: .dislikeButton).onTap(disposeBag: disposeBag) {
