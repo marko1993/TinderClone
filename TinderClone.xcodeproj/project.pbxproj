@@ -13,7 +13,6 @@
 		AD0F3F072531E77F00B441C5 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F062531E77F00B441C5 /* UIButton+Extensions.swift */; };
 		AD0F3F092531EFDD00B441C5 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */; };
 		AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */; };
-		AD0F3F0D25320ABC00B441C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */; };
 		AD0F3F102532114300B441C5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F0F2532114300B441C5 /* AuthService.swift */; };
 		AD0F3F12253211B300B441C5 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0F3F11253211B300B441C5 /* FirebaseService.swift */; };
 		AD28FF93253C93D800F6140D /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28FF92253C93D800F6140D /* BaseService.swift */; };
@@ -34,6 +33,7 @@
 		AD4A31F62528F0B20050E9CA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F52528F0B20050E9CA /* CardView.swift */; };
 		AD4A31F82529031F0050E9CA /* BaseStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F72529031F0050E9CA /* BaseStackView.swift */; };
 		AD4A31FA252903ED0050E9CA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F9252903ED0050E9CA /* BaseView.swift */; };
+		AD4E39B225E01562004E95DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD4E39B125E01562004E95DB /* GoogleService-Info.plist */; };
 		AD56B0CE25331C1B000D1AD4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0CD25331C1B000D1AD4 /* SettingsViewController.swift */; };
 		AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */; };
 		AD56B0D325331C63000D1AD4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD56B0D225331C63000D1AD4 /* SettingsView.swift */; };
@@ -83,7 +83,6 @@
 		AD0F3F062531E77F00B441C5 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		AD0F3F0F2532114300B441C5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AD0F3F11253211B300B441C5 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		AD28FF92253C93D800F6140D /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		AD4A31F52528F0B20050E9CA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AD4A31F72529031F0050E9CA /* BaseStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStackView.swift; sourceTree = "<group>"; };
 		AD4A31F9252903ED0050E9CA /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		AD4E39B125E01562004E95DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AD56B0CD25331C1B000D1AD4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AD56B0CF25331C40000D1AD4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		AD56B0D225331C63000D1AD4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -228,8 +228,8 @@
 				AD4A31E42528E46B0050E9CA /* Data */,
 				AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */,
 				AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */,
+				AD4E39B125E01562004E95DB /* GoogleService-Info.plist */,
 				AD4A31D62528E3FF0050E9CA /* Assets.xcassets */,
-				AD0F3F0C25320ABC00B441C5 /* GoogleService-Info.plist */,
 				AD4A31D82528E3FF0050E9CA /* LaunchScreen.storyboard */,
 				AD4A31DB2528E3FF0050E9CA /* Info.plist */,
 			);
@@ -506,7 +506,7 @@
 			files = (
 				AD4A31DA2528E3FF0050E9CA /* LaunchScreen.storyboard in Resources */,
 				AD4A31D72528E3FF0050E9CA /* Assets.xcassets in Resources */,
-				AD0F3F0D25320ABC00B441C5 /* GoogleService-Info.plist in Resources */,
+				AD4E39B225E01562004E95DB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,7 +764,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.croentrain.TinderClone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.croentrain.TinderClone2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -783,7 +783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.croentrain.TinderClone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.croentrain.TinderClone2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

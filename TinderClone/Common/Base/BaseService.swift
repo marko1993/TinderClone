@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class BaseService {
     static func getCollection(_ name: String) -> CollectionReference {
