@@ -10,17 +10,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol ProfileDelegate {
+    func bottomButton(didSelect profileButton: ProfileStackButton)
+}
+
 class ProfileViewController: BaseViewController {
     
-    var viewModel: ProfileViewModel
+    var viewModel: ProfileViewModel!
+    var delegate: ProfileDelegate?
     let profileView: ProfileView
-    private let bottomButtonPressed: BehaviorRelay<ProfileStackButton?> = BehaviorRelay(value: nil)
-    var bottomButtonPressedObservable: Observable<ProfileStackButton?> {
-        return bottomButtonPressed.asObservable()
-    }
     
-    init(viewModel: ProfileViewModel, hideBottomNavigation: Bool = false) {
+    init(viewModel: ProfileViewModel, delegate: ProfileDelegate?, hideBottomNavigation: Bool = false) {
         self.viewModel = viewModel
+        self.delegate = delegate
         self.profileView = ProfileView(hideBottomNavigation: hideBottomNavigation)
         super.init(nibName: nil, bundle: nil)
     }
@@ -56,13 +58,13 @@ class ProfileViewController: BaseViewController {
         
         profileView.getBottomStackButton(button: .dislikeButton).onTap(disposeBag: disposeBag) {
             self.dismiss(animated: true) {
-                self.bottomButtonPressed.accept(.dislikeButton)
+                self.delegate?.bottomButton(didSelect: .dislikeButton)
             }
         }
         
         profileView.getBottomStackButton(button: .likeButton).onTap(disposeBag: disposeBag) {
             self.dismiss(animated: true) {
-                self.bottomButtonPressed.accept(.likeButton)
+                self.delegate?.bottomButton(didSelect: .likeButton)
             }
         }
         

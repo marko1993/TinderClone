@@ -32,4 +32,8 @@ class MatchViewModel: BaseViewModel {
         return matchedUser
     }
     
+    func presentUsersMatches() {
+        self.coordinator?.presentMatchesViewController(user: currentUser)
+    }
+    
 }

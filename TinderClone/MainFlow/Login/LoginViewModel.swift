@@ -31,4 +31,8 @@ class LoginViewModel: BaseViewModel {
         }
     }
     
+    func openRegistration() {
+        self.coordinator?.openRegistration()
+    }
+    
 }

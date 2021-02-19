@@ -12,7 +12,7 @@ import RxCocoa
 
 class RegistrationViewController: BaseViewController {
     
-    let viewModel = RegistrationViewModel()
+    var viewModel: RegistrationViewModel!
     let registrationView = RegistrationView()
     
     override func viewDidLoad() {
@@ -46,7 +46,13 @@ class RegistrationViewController: BaseViewController {
                     self?.registrationView.setErrorLabel(text: error.localizedDescription)
                     return
                 }
-                self?.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    let viewControllers: [UIViewController]? = self?.navigationController?.viewControllers
+                    if let controllers = viewControllers {
+                        self?.navigationController!.popToViewController(controllers[controllers.count - 3], animated: true)
+                    }
+                    
+                }
             }
         }
         

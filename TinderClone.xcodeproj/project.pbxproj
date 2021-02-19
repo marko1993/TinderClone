@@ -60,9 +60,11 @@
 		AD8374652530D76E004C79EA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374642530D76E004C79EA /* LoginView.swift */; };
 		AD8374672530E0DC004C79EA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8374662530E0DC004C79EA /* CustomTextField.swift */; };
 		AD9EE6892530E73A00E3FDBF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9EE6882530E73A00E3FDBF /* CustomButton.swift */; };
+		ADB10DB925E0206500EB4465 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB10DB825E0206500EB4465 /* AppCoordinator.swift */; };
 		ADB820DA2529DF1A00EC2E58 /* CardView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB820D92529DF1A00EC2E58 /* CardView+Helpers.swift */; };
 		ADB820DC2529E3F000EC2E58 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB820DB2529E3F000EC2E58 /* User.swift */; };
 		ADB820DF2529E4F000EC2E58 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB820DE2529E4F000EC2E58 /* CardViewModel.swift */; };
+		ADBFA0EE25E044E900D2D410 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBFA0ED25E044E900D2D410 /* Coordinator.swift */; };
 		ADC6BD742530FBD3007927EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC6BD732530FBD3007927EB /* Constants.swift */; };
 		ADD39105253B443C00DCF3B3 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD39104253B443C00DCF3B3 /* UILabel+Extensions.swift */; };
 		ADD39109253B45DF00DCF3B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD39108253B45DF00DCF3B3 /* ProfileViewController.swift */; };
@@ -132,9 +134,11 @@
 		AD8374642530D76E004C79EA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AD8374662530E0DC004C79EA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AD9EE6882530E73A00E3FDBF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		ADB10DB825E0206500EB4465 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		ADB820D92529DF1A00EC2E58 /* CardView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardView+Helpers.swift"; sourceTree = "<group>"; };
 		ADB820DB2529E3F000EC2E58 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ADB820DE2529E4F000EC2E58 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		ADBFA0ED25E044E900D2D410 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		ADC6BD732530FBD3007927EB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ADD39104253B443C00DCF3B3 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		ADD39108253B45DF00DCF3B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -226,11 +230,8 @@
 				AD4A31E62528E4DC0050E9CA /* MainFlow */,
 				AD4A31E52528E4850050E9CA /* Common */,
 				AD4A31E42528E46B0050E9CA /* Data */,
-				AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */,
-				AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */,
+				ADB10DB625E01F2D00EB4465 /* SupportingFiles */,
 				AD4E39B125E01562004E95DB /* GoogleService-Info.plist */,
-				AD4A31D62528E3FF0050E9CA /* Assets.xcassets */,
-				AD4A31D82528E3FF0050E9CA /* LaunchScreen.storyboard */,
 				AD4A31DB2528E3FF0050E9CA /* Info.plist */,
 			);
 			path = TinderClone;
@@ -289,6 +290,7 @@
 		AD4A31E52528E4850050E9CA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ADB10DB725E0205500EB4465 /* Coordinator */,
 				AD094AC82529F5AA0026FB61 /* Base */,
 				AD4A31E22528E4220050E9CA /* View */,
 				AD4A31E32528E44F0050E9CA /* Utils */,
@@ -405,6 +407,26 @@
 				AD8374642530D76E004C79EA /* LoginView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ADB10DB625E01F2D00EB4465 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				AD4A31CD2528E3FD0050E9CA /* AppDelegate.swift */,
+				AD4A31CF2528E3FD0050E9CA /* SceneDelegate.swift */,
+				AD4A31D62528E3FF0050E9CA /* Assets.xcassets */,
+				AD4A31D82528E3FF0050E9CA /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		ADB10DB725E0205500EB4465 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				ADB10DB825E0206500EB4465 /* AppCoordinator.swift */,
+				ADBFA0ED25E044E900D2D410 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		ADB820DD2529E4D000EC2E58 /* Card */ = {
@@ -565,6 +587,7 @@
 				AD37DDFA25379AFF00A7303C /* SliderView.swift in Sources */,
 				AD8374602530D6F1004C79EA /* LoginViewController.swift in Sources */,
 				ADD3910F253B600300DCF3B3 /* ProfileCollectionViewCell.swift in Sources */,
+				ADB10DB925E0206500EB4465 /* AppCoordinator.swift in Sources */,
 				AD0F3F102532114300B441C5 /* AuthService.swift in Sources */,
 				AD739F6F25408CBA0015589A /* MatchedUserTableViewCell.swift in Sources */,
 				AD56B0DF25363837000D1AD4 /* SettingsSection.swift in Sources */,
@@ -606,6 +629,7 @@
 				AD56B0D025331C40000D1AD4 /* SettingsViewModel.swift in Sources */,
 				AD3C6C302539FE1600A81205 /* CustomLabel.swift in Sources */,
 				AD0F3F0B2531F45C00B441C5 /* UIViewController+Extensions.swift in Sources */,
+				ADBFA0EE25E044E900D2D410 /* Coordinator.swift in Sources */,
 				AD8374592530D61A004C79EA /* RegistrationViewController.swift in Sources */,
 				AD56B0E32536413D000D1AD4 /* SettingsData.swift in Sources */,
 				AD8374552530D1D4004C79EA /* Repository.swift in Sources */,

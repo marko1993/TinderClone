@@ -28,10 +28,6 @@ class MatchView: BaseView {
     private lazy var views = [matchImage, descriptionLabel,
                               currentUserImage, matchedUserImage,
                               goToMatchesButton, keepSwipingButton]
-    private let goToMatches: BehaviorRelay<Bool?> = BehaviorRelay(value: nil)
-    var goToMatchesObservable: Observable<Bool?> {
-        return goToMatches.asObservable()
-    }
     
     init(viewModel: MatchViewModel) {
         self.viewModel = viewModel
@@ -93,7 +89,7 @@ class MatchView: BaseView {
         }
         
         goToMatchesButton.onTap(disposeBag: disposeBag) {
-            self.goToMatches.accept(true)
+            self.viewModel.presentUsersMatches()
         }
     }
     

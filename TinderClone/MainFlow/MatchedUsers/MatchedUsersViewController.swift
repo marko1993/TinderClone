@@ -26,6 +26,7 @@ class MatchedUsersViewController: BaseViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: true)
         setupView(matchedUsersView)
         configureNavigationController()
         setupBinding()
@@ -66,7 +67,7 @@ class MatchedUsersViewController: BaseViewController, UIScrollViewDelegate {
     
     private func setupBinding() {
         matchedUsersView.leftButton.onTap(disposeBag: disposeBag) {
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -82,6 +83,6 @@ extension MatchedUsersViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - MatchedUserTableViewCellDelegate
 extension MatchedUsersViewController: MatchedUserTableViewCellDelegate {
     func onItemClickPerformed(_ cell: MatchedUserTableViewCell, user: User) {
-        presentProfileViewController(user: user, hideBottomNavigation: true)
+        self.viewModel.presentProfileViewController(user: user)
     }
 }

@@ -95,4 +95,8 @@ class SettingsViewModel: BaseViewModel {
         saveUser(user: user, completionHandler: completionHandler)
     }
     
+    func presentLoginScreen() {
+        self.coordinator?.presentLoginViewController()
+    }
+    
 }

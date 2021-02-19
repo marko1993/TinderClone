@@ -12,7 +12,7 @@ import RxCocoa
 
 class LoginViewController: BaseViewController {
     
-    let viewModel = LoginViewModel()
+    var viewModel: LoginViewModel!
     let loginView = LoginView()
     
     override func viewDidLoad() {
@@ -36,12 +36,12 @@ class LoginViewController: BaseViewController {
                     self?.loginView.setErrorLabel(text: error.localizedDescription)
                     return
                 }
-                self?.dismiss(animated: true, completion: nil)
+                self?.navigationController?.popViewController(animated: true)
             }
         }
        
         loginView.goToRegistrationButton.onTap(disposeBag: disposeBag) {
-            self.navigationController?.pushViewController(RegistrationViewController(), animated: true)
+            self.viewModel.openRegistration()
         }
         
         loginView.emailTextField.onValueChanged(disposeBag: disposeBag) { text in

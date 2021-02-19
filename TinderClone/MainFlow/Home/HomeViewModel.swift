@@ -81,4 +81,26 @@ class HomeViewModel: BaseViewModel {
         Repository.shared().uploadMatch(currentUser: currentUser, matchedUser: user)
     }
     
+    func presentLoginScreen() {
+        self.coordinator?.presentLoginViewController()
+    }
+    
+    func presentUsersMatches() {
+        guard let user = self.getUser() else { return }
+        self.coordinator?.presentMatchesViewController(user: user)
+    }
+    
+    func presentProfileViewController(user: User, delegate: ProfileDelegate) {
+        self.coordinator?.presentProfileViewController(for: user, delegate: delegate)
+    }
+    
+    func presentSettings() {
+        self.coordinator?.presentSettingsViewController()
+    }
+    
+    func presentMatchView(for user: User) {
+        guard let currentUser = getUser() else { return }
+        self.coordinator?.presentMatchView(for: user, currentUser: currentUser)
+    }
+    
 }

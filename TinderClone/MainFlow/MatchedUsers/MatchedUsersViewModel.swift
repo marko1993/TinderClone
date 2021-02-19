@@ -29,4 +29,8 @@ class MatchedUsersViewModel: BaseViewModel {
         }
     }
     
+    func presentProfileViewController(user: User) {
+        self.coordinator?.presentProfileViewController(for: user, delegate: nil, hideBottomNavigation: true)
+    }
+    
 }

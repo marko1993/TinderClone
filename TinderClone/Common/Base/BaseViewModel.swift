@@ -11,6 +11,7 @@ import Firebase
 
 class BaseViewModel {
     let disposeBag = DisposeBag()
+    var coordinator: AppCoordinator?
     
     func isUserLoggedIn() -> Bool {
         if Auth.auth().currentUser == nil {

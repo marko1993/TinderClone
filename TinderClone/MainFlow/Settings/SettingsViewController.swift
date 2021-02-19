@@ -12,7 +12,7 @@ import RxCocoa
 
 class SettingsViewController: BaseViewController {
     
-    let viewModel = SettingsViewModel()
+    var viewModel: SettingsViewModel!
     let settingsView = SettingsView()
     let imagePicker = UIImagePickerController()
     
@@ -80,7 +80,6 @@ class SettingsViewController: BaseViewController {
             self.viewModel.logout { error in
                 if error == nil {
                     self.dismiss(animated: true, completion: nil)
-                    self.presentLoginViewController()
                 }
             }
         }

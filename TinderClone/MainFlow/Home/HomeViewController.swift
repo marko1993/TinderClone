@@ -11,12 +11,13 @@ import UIKit
 class HomeViewController: BaseViewController {
     
     private let homeView = HomeView()
-    private let viewModel = HomeViewModel()
+    var viewModel: HomeViewModel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
         if !viewModel.isUserLoggedIn() {
-            presentLoginViewController()
+            self.viewModel.presentLoginScreen()
         }
     }
     
@@ -39,20 +40,17 @@ class HomeViewController: BaseViewController {
     
     private func setupBinding() {
         homeView.navigationStackView.matchesButton.onTap(disposeBag: disposeBag) {
-            self.presentMatchesViewController()
+            self.viewModel.presentUsersMatches()
         }
         
         homeView.navigationStackView.settingsButton.onTap(disposeBag: disposeBag) {
-            let controller = SettingsViewController()
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true, completion: nil)
+            self.viewModel.presentSettings()
         }
         
         viewModel.logoutStatusObservable.subscribe(onNext: { successful in
             if let successful = successful {
                 if successful {
-                    self.presentLoginViewController()
+                    self.viewModel.presentLoginScreen()
                 }
             }
         }).disposed(by: disposeBag)
@@ -91,8 +89,9 @@ class HomeViewController: BaseViewController {
     }
     
     private func setupBinding(for cardView: CardView) {
-        cardView.infoButton.onTap(disposeBag: disposeBag) {
-            self.presentProfileViewController(user: cardView.viewModel.user)
+        cardView.infoButton.onTap(disposeBag: disposeBag) { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.presentProfileViewController(user: cardView.viewModel.user, delegate: self)
         }
         
         cardView.swipeCardObservable.subscribe(onNext: { direction in
@@ -109,31 +108,16 @@ class HomeViewController: BaseViewController {
         let topCard = self.viewModel.popCardOnTop()
         if let topCard = topCard {
             self.viewModel.saveSwipeAndCheckForMatch(for: topCard.viewModel.user, direction: direction) { [weak self] userMatched in
-                self?.presentMatchView(for: userMatched)
+                self?.viewModel.presentMatchView(for: userMatched)
                 self?.viewModel.uploadMatch(for: userMatched)
             }
         }
     }
     
-    private func presentMatchView(for user: User) {
-        guard let currentUser = viewModel.getUser() else { return }
-        let matchView = MatchView(viewModel: MatchViewModel(currentUser: currentUser, matchedUser: user))
-        
-        matchView.goToMatchesObservable.subscribe(onNext: { goToMatches in
-            if goToMatches == true {
-                self.presentMatchesViewController()
-            }
-        }).disposed(by: disposeBag)
-        
-        homeView.presentMatchView(view: matchView)
+}
+
+extension HomeViewController: ProfileDelegate {
+    func bottomButton(didSelect profileButton: ProfileStackButton) {
+        self.saveSwipe(direction: profileButton == .likeButton ? .right : .left, performeSwipeAnimation: true)
     }
-    
-    private func presentMatchesViewController() {
-        guard let user = self.viewModel.getUser() else { return }
-        let controller = MatchedUsersViewController(viewModel: MatchedUsersViewModel(user: user))
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
-    }
-    
 }
