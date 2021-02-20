@@ -83,6 +83,6 @@ extension MatchedUsersViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - MatchedUserTableViewCellDelegate
 extension MatchedUsersViewController: MatchedUserTableViewCellDelegate {
     func onItemClickPerformed(_ cell: MatchedUserTableViewCell, user: User) {
-        self.viewModel.presentProfileViewController(user: user)
+        self.viewModel.presentProfileScreen(user: user)
     }
 }

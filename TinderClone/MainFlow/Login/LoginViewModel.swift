@@ -31,8 +31,8 @@ class LoginViewModel: BaseViewModel {
         }
     }
     
-    func openRegistration() {
-        self.coordinator?.openRegistration()
+    func presentRegistrationScreen() {
+        self.coordinator?.presentRegistrationViewController()
     }
     
 }

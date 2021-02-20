@@ -41,7 +41,7 @@ class LoginViewController: BaseViewController {
         }
        
         loginView.goToRegistrationButton.onTap(disposeBag: disposeBag) {
-            self.viewModel.openRegistration()
+            self.viewModel.presentRegistrationScreen()
         }
         
         loginView.emailTextField.onValueChanged(disposeBag: disposeBag) { text in

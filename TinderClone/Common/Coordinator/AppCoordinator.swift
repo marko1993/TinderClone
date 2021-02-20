@@ -71,7 +71,7 @@ class AppCoordinator: Coordinator {
         self.currentViewController?.present(nav, animated: true, completion: nil)
     }
     
-    func openRegistration() {
+    func presentRegistrationViewController() {
         let viewModel = RegistrationViewModel()
         viewModel.coordinator = self
         let controller = RegistrationViewController()

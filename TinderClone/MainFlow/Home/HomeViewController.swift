@@ -91,7 +91,7 @@ class HomeViewController: BaseViewController {
     private func setupBinding(for cardView: CardView) {
         cardView.infoButton.onTap(disposeBag: disposeBag) { [weak self] in
             guard let self = self else { return }
-            self.viewModel.presentProfileViewController(user: cardView.viewModel.user, delegate: self)
+            self.viewModel.presentProfileScreen(user: cardView.viewModel.user, delegate: self)
         }
         
         cardView.swipeCardObservable.subscribe(onNext: { direction in
@@ -101,7 +101,7 @@ class HomeViewController: BaseViewController {
         }).disposed(by: disposeBag)
     }
     
-    override func saveSwipe(direction: SwipeDirection, performeSwipeAnimation: Bool) {
+    private func saveSwipe(direction: SwipeDirection, performeSwipeAnimation: Bool) {
         if performeSwipeAnimation {
             self.homeView.performSwipe(direction: direction)
         }

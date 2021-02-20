@@ -23,8 +23,4 @@ class BaseViewController: UIViewController {
         view.fillSuperview()
     }
     
-    func saveSwipe(direction: SwipeDirection, performeSwipeAnimation: Bool) {
-        
-    }
-    
 }

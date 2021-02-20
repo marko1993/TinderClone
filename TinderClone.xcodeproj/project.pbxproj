@@ -26,7 +26,7 @@
 		AD4A31DA2528E3FF0050E9CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4A31D82528E3FF0050E9CA /* LaunchScreen.storyboard */; };
 		AD4A31E92528E5070050E9CA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31E82528E5070050E9CA /* HomeViewController.swift */; };
 		AD4A31EB2528E5DC0050E9CA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31EA2528E5DC0050E9CA /* BaseViewController.swift */; };
-		AD4A31ED2528E6E40050E9CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31EC2528E6E40050E9CA /* Extensions.swift */; };
+		AD4A31ED2528E6E40050E9CA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31EC2528E6E40050E9CA /* UIView+Extensions.swift */; };
 		AD4A31EF2528E7300050E9CA /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31EE2528E7300050E9CA /* HomeNavigationStackView.swift */; };
 		AD4A31F12528E8E80050E9CA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F02528E8E80050E9CA /* HomeView.swift */; };
 		AD4A31F42528ED8A0050E9CA /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4A31F32528ED8A0050E9CA /* BottomControlsStackView.swift */; };
@@ -100,7 +100,7 @@
 		AD4A31DB2528E3FF0050E9CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD4A31E82528E5070050E9CA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AD4A31EA2528E5DC0050E9CA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		AD4A31EC2528E6E40050E9CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AD4A31EC2528E6E40050E9CA /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		AD4A31EE2528E7300050E9CA /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
 		AD4A31F02528E8E80050E9CA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AD4A31F32528ED8A0050E9CA /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		AD4A31E32528E44F0050E9CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AD4A31EC2528E6E40050E9CA /* Extensions.swift */,
+				AD4A31EC2528E6E40050E9CA /* UIView+Extensions.swift */,
 				AD0F3F062531E77F00B441C5 /* UIButton+Extensions.swift */,
 				AD0F3F082531EFDD00B441C5 /* UITextField+Extensions.swift */,
 				AD0F3F0A2531F45C00B441C5 /* UIViewController+Extensions.swift */,
@@ -601,7 +601,7 @@
 				ADB820DC2529E3F000EC2E58 /* User.swift in Sources */,
 				AD56B0DD253631AB000D1AD4 /* SettingsTableViewCell.swift in Sources */,
 				AD8374622530D728004C79EA /* LoginViewModel.swift in Sources */,
-				AD4A31ED2528E6E40050E9CA /* Extensions.swift in Sources */,
+				AD4A31ED2528E6E40050E9CA /* UIView+Extensions.swift in Sources */,
 				AD9EE6892530E73A00E3FDBF /* CustomButton.swift in Sources */,
 				AD8374652530D76E004C79EA /* LoginView.swift in Sources */,
 				AD4A31F62528F0B20050E9CA /* CardView.swift in Sources */,

@@ -90,7 +90,7 @@ class HomeViewModel: BaseViewModel {
         self.coordinator?.presentMatchesViewController(user: user)
     }
     
-    func presentProfileViewController(user: User, delegate: ProfileDelegate) {
+    func presentProfileScreen(user: User, delegate: ProfileDelegate) {
         self.coordinator?.presentProfileViewController(for: user, delegate: delegate)
     }
     
