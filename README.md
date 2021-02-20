@@ -1,1 +1,1 @@
-This is a simple Tiner clone application, written in Swift. It uses RxSwift and is written in MVVM architecture.
+This is a simple Tinder clone application, written in Swift. It uses Swinject for dependency injection and is written in MVVM architecture with coordinator pattern.
