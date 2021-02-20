@@ -12,6 +12,7 @@ import Firebase
 class BaseViewModel {
     let disposeBag = DisposeBag()
     var coordinator: AppCoordinator?
+    var repository: MainRepository?
     
     func isUserLoggedIn() -> Bool {
         if Auth.auth().currentUser == nil {
@@ -23,7 +24,7 @@ class BaseViewModel {
     
     func getUser(completionHandler: @escaping (User?, Error?) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        Repository.shared().getUser(withUid: uid) { user, error in
+        repository?.getUser(withUid: uid) { user, error in
             if let error = error {
                 completionHandler(nil, error)
                 return
@@ -33,7 +34,7 @@ class BaseViewModel {
     }
     
     func logout(completionHandler: @escaping (Error?) -> Void) {
-        Repository.shared().logoutUser { error in
+        repository?.logoutUser { error in
             if error != nil {
                 completionHandler(error)
             } else {
@@ -43,7 +44,7 @@ class BaseViewModel {
     }
     
     func getAllUsers(forCurrent user: User, completionHandler: @escaping ([User]?, Error?) -> Void) {
-        Repository.shared().getUsers(forCurrentUser: user) { users, error in
+        repository?.getUsers(forCurrentUser: user) { users, error in
             if let error = error {
                 completionHandler(nil, error)
                 return
@@ -53,7 +54,7 @@ class BaseViewModel {
     }
     
     func saveUser(user: User, completionHandler: @escaping (Error?) -> Void) {
-        Repository.shared().saveUserData(user: user, completionHandler: completionHandler)
+        repository?.saveUserData(user: user, completionHandler: completionHandler)
     }
     
     func getUserInfoTextAttributedString(user: User, textSize: CGFloat, attributedTextSize: CGFloat, textColor: UIColor) -> NSAttributedString {
@@ -70,7 +71,7 @@ class BaseViewModel {
     }
     
     func saveSwipeAndCheckForMatch(for user: User, direction: SwipeDirection, completionHandler: @escaping (User) -> Void) {
-        Repository.shared().saveSwipeAndCheckForMatch(for: user, direction: direction, completionHandler: completionHandler)
+        repository?.saveSwipeAndCheckForMatch(for: user, direction: direction, completionHandler: completionHandler)
     }
     
 }

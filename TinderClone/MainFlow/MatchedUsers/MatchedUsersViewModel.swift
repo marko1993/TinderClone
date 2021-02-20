@@ -24,7 +24,7 @@ class MatchedUsersViewModel: BaseViewModel {
     }
     
     func getMatches() {
-        Repository.shared().getMatches { [weak self] matches, error in
+        self.repository?.getMatches { [weak self] matches, error in
             self?.matches.accept(matches)
         }
     }

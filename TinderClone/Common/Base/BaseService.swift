@@ -11,7 +11,7 @@ import Firebase
 import FirebaseFirestore
 
 class BaseService {
-    static func getCollection(_ name: String) -> CollectionReference {
+    func getCollection(_ name: String) -> CollectionReference {
         return Firestore.firestore().collection(name)
     }
 }

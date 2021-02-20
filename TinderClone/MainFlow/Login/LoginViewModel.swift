@@ -22,7 +22,7 @@ class LoginViewModel: BaseViewModel {
     }
     
     func logUserIn(email: String, password: String, completionHandler: @escaping (Error?) -> Void) {
-        Repository.shared().logUserIn(email: email, password: password) { authDataResult, error in
+        self.repository?.logUserIn(email: email, password: password) { authDataResult, error in
             if let error = error {
                 completionHandler(error)
             } else {

@@ -78,7 +78,7 @@ class HomeViewModel: BaseViewModel {
     
     func uploadMatch(for user: User) {
         guard let currentUser = getUser() else { return }
-        Repository.shared().uploadMatch(currentUser: currentUser, matchedUser: user)
+        self.repository?.uploadMatch(currentUser: currentUser, matchedUser: user)
     }
     
     func presentLoginScreen() {

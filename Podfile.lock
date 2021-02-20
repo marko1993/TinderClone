@@ -345,6 +345,7 @@ PODS:
   - SDWebImage (4.4.8):
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
+  - Swinject (2.7.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -356,6 +357,7 @@ DEPENDENCIES:
   - RxCocoa (~> 5.0)
   - RxSwift (~> 5.0)
   - SDWebImage (~> 4.4.2)
+  - Swinject
 
 SPEC REPOS:
   trunk:
@@ -384,6 +386,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - Swinject
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -411,7 +414,8 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: cf100c711078a386d0584611215e52873356ee0f
+PODFILE CHECKSUM: d42a3ca174cf99f99b5c49bd2b3477d045850914
 
 COCOAPODS: 1.10.1

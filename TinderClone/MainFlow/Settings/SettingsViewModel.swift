@@ -79,13 +79,13 @@ class SettingsViewModel: BaseViewModel {
     }
     
     func uploadImage(image: UIImage, imageIndex: Int, completionHandler: @escaping (String?, Error?) -> Void) {
-        FirebaseService.uploadImage(image: image) { [weak self] url, error in
-            guard let url = url else {return}
+        self.repository?.uploadImage(image: image, completionHandler: { [weak self] (url, error) in
             completionHandler(url, error)
+            guard let url = url else {return}
             self?.user?.images.append(url)
             guard let imageURL = URL(string: url) else {return}
             self?.user?.imageURLs.append(imageURL)
-        }
+        })
     }
     
     func saveUser(completionHandler: @escaping (Error?) -> Void) {

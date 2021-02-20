@@ -23,7 +23,7 @@ class RegistrationViewModel: BaseViewModel {
     }
     
     func registerUser(with credentials: AuthCredentials, completionHandler: @escaping (Error?) -> Void) {
-        Repository.shared().registerUser(with: credentials) { uid, error in
+        self.repository?.registerUser(with: credentials) { uid, error in
             if let error = error {
                 completionHandler(error)
                 print(error.localizedDescription)
